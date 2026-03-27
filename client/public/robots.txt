@@ -1,11 +1,23 @@
+# The Quiet Storm — robots.txt
+# https://quietstorm.love
+
 User-agent: *
 Allow: /
-Disallow: /api/
+Allow: /sitemap.xml
+Allow: /sitemap-images.xml
+Allow: /feed.xml
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /.well-known/ai.json
+Allow: /api/ai/
+Disallow: /api/trpc/
+Disallow: /api/cron/
 Disallow: /404
 
 Sitemap: https://quietstorm.love/sitemap.xml
 
-# AI Training Opt-Out
+# ─── AI Crawler Opt-Out (50+ bots) ───
+
 User-agent: GPTBot
 Disallow: /
 
@@ -22,4 +34,166 @@ User-agent: anthropic-ai
 Disallow: /
 
 User-agent: Claude-Web
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: Seekport
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: Baiduspider
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: webz.io
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: ICC-Crawler
+Disallow: /
+
+User-agent: Nicecrawler
+Disallow: /
+
+User-agent: Surdotly
+Disallow: /
+
+User-agent: Neevabot
+Disallow: /
+
+User-agent: Sidetrade indexer bot
+Disallow: /
+
+User-agent: Friendica
+Disallow: /
+
+User-agent: Mastodon
+Disallow: /
+
+User-agent: ISSCyberRiskCrawler
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: Newsbreak
+Disallow: /
+
+User-agent: magpie-crawler
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: Ai2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dolma
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+User-agent: Turnitin
+Disallow: /
+
+User-agent: iaskspider
+Disallow: /
+
+User-agent: Kangaroo
+Disallow: /
+
+User-agent: Velenpublicwebcrawler
+Disallow: /
+
+User-agent: FriendlyCrawler
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: PiplBot
 Disallow: /

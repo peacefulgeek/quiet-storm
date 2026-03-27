@@ -2,6 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +22,8 @@ async function startServer() {
     res.setHeader("X-AI-Content-Author", AUTHOR);
     res.setHeader("X-AI-Site-Name", SITE_TITLE);
     res.setHeader("X-AI-Site-URL", `https://${SITE_DOMAIN}`);
+    res.setHeader("X-AI-Identity-Endpoint", `https://${SITE_DOMAIN}/api/ai/identity`);
+    res.setHeader("X-AI-LLMs-Txt", `https://${SITE_DOMAIN}/llms.txt`);
     next();
   });
 
@@ -126,11 +129,11 @@ async function startServer() {
     });
   });
 
-  // /api/ai/articles
+  // /api/ai/articles — dynamic visible count
   app.get("/api/ai/articles", (_req, res) => {
     res.json({
       site: SITE_TITLE,
-      total_articles: 300,
+      note: "Article count reflects currently published articles. New articles are published daily.",
       content_url: `https://${SITE_DOMAIN}/llms-full.txt`,
       sitemap_url: `https://${SITE_DOMAIN}/sitemap.xml`,
       rss_url: `https://${SITE_DOMAIN}/feed.xml`,
@@ -170,9 +173,29 @@ async function startServer() {
     });
   });
 
-  // Handle client-side routing - serve index.html for all non-API routes
-  app.get("*", (_req, res) => {
-    res.sendFile(path.join(staticPath, "index.html"));
+  // Known client-side routes — serve index.html with 200
+  const clientRoutes = [
+    "/", "/articles", "/about", "/start-here", "/calm-now",
+    "/privacy", "/terms", "/404",
+  ];
+  const clientRoutePrefixes = [
+    "/article/", "/category/", "/quiz/",
+  ];
+
+  app.get("*", (req, res) => {
+    const reqPath = req.path;
+    const isKnownRoute =
+      clientRoutes.includes(reqPath) ||
+      clientRoutePrefixes.some((p) => reqPath.startsWith(p));
+
+    const indexPath = path.join(staticPath, "index.html");
+
+    if (isKnownRoute) {
+      res.sendFile(indexPath);
+    } else {
+      // Unknown route — send 404 status with the SPA shell
+      res.status(404).sendFile(indexPath);
+    }
   });
 
   const port = process.env.PORT || 3000;
