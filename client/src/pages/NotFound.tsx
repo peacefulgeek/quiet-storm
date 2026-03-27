@@ -1,49 +1,57 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
-import { useLocation } from "wouter";
+import { Link } from "wouter";
+import { articles } from "@/data/articles";
+import { filterPublished, sortByDate } from "@/lib/utils";
+import SEO from "@/components/SEO";
+import Layout from "@/components/Layout";
+import { useMemo } from "react";
 
 export default function NotFound() {
-  const [, setLocation] = useLocation();
-
-  const handleGoHome = () => {
-    setLocation("/");
-  };
+  const published = useMemo(() => sortByDate(filterPublished(articles)).slice(0, 6), []);
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-      <Card className="w-full max-w-lg mx-4 shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-        <CardContent className="pt-8 pb-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-red-100 rounded-full animate-pulse" />
-              <AlertCircle className="relative h-16 w-16 text-red-500" />
-            </div>
-          </div>
+    <Layout>
+      <SEO title="Page Not Found" noIndex />
 
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">404</h1>
+      <div className="max-w-[720px] mx-auto px-4 sm:px-6 py-16">
+        <p className="text-sm text-muted-foreground uppercase tracking-wider mb-4">
+          404
+        </p>
 
-          <h2 className="text-xl font-semibold text-slate-700 mb-4">
-            Page Not Found
-          </h2>
+        <h1 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-8">
+          This page doesn't exist.
+        </h1>
 
-          <p className="text-slate-600 mb-8 leading-relaxed">
-            Sorry, the page you are looking for doesn't exist.
-            <br />
-            It may have been moved or deleted.
-          </p>
+        <blockquote
+          className="border-l-[3px] pl-6 mb-12 font-heading text-xl leading-relaxed text-muted-foreground italic"
+          style={{ borderColor: "oklch(0.72 0.15 80)" }}
+        >
+          "The mind is not the enemy. The identification with it is."
+        </blockquote>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              onClick={handleGoHome}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+        <p className="text-muted-foreground mb-8 leading-relaxed">
+          The page you're looking for may have moved or never existed. But since you're here, these might be worth your time:
+        </p>
+
+        <div className="space-y-3 mb-12">
+          {published.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/article/${article.slug}`}
+              className="block no-underline text-foreground hover:text-sage transition-colors py-2 border-b border-border/30"
             >
-              <Home className="w-4 h-4 mr-2" />
-              Go Home
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+              {article.title}
+            </Link>
+          ))}
+        </div>
+
+        <Link
+          href="/"
+          className="no-underline text-sm font-medium transition-colors"
+          style={{ color: "oklch(0.68 0.1 140)" }}
+        >
+          ← Back to home
+        </Link>
+      </div>
+    </Layout>
   );
 }
