@@ -12,11 +12,16 @@ export default function Terms() {
         noIndex
       />
 
-      <div className="max-w-[720px] mx-auto px-4 sm:px-6 py-12">
-        <h1 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-8">
-          Terms of Service
-        </h1>
-        <p className="text-sm text-muted-foreground mb-8">Last updated: March 2026</p>
+      <section className="section-sage py-12">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="font-heading text-3xl sm:text-4xl font-semibold text-foreground mb-2">
+            Terms of Service
+          </h1>
+          <p className="text-sm text-muted-foreground">Last updated: March 2026</p>
+        </div>
+      </section>
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div className="space-y-8 text-foreground leading-relaxed">
           <section>

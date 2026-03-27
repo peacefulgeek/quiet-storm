@@ -1,6 +1,6 @@
 /*
- * THE QUIET STORM — "Breath Architecture" Design System
- * Biophilic Minimalism: generous whitespace, typography as primary medium
+ * THE QUIET STORM — Visual Design System
+ * Warm Editorial: sage, amber, cloud — used everywhere, not just variables
  * Colors: Sage #87AE73 | Cloud White #F5F5F0 | Warm Amber #D4A017
  * Fonts: Fraunces (headlines) | Atkinson Hyperlegible (body) — self-hosted on Bunny CDN
  */
@@ -69,35 +69,38 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-sage: oklch(0.68 0.1 140);
-  --color-sage-light: oklch(0.92 0.04 140);
-  --color-amber: oklch(0.72 0.15 80);
-  --color-amber-light: oklch(0.92 0.06 80);
+  --color-sage: oklch(0.62 0.12 145);
+  --color-sage-light: oklch(0.94 0.04 145);
+  --color-sage-dark: oklch(0.45 0.1 145);
+  --color-amber: oklch(0.72 0.16 75);
+  --color-amber-light: oklch(0.93 0.06 75);
   --color-cloud: oklch(0.97 0.005 90);
-  --color-charcoal: oklch(0.25 0.01 60);
+  --color-cloud-warm: oklch(0.95 0.01 80);
+  --color-charcoal: oklch(0.22 0.01 60);
+  --color-charcoal-light: oklch(0.35 0.01 60);
 }
 
 :root {
   --radius: 0.5rem;
   --background: oklch(0.97 0.005 90);
-  --foreground: oklch(0.25 0.01 60);
-  --card: oklch(0.99 0.002 90);
-  --card-foreground: oklch(0.25 0.01 60);
-  --popover: oklch(0.99 0.002 90);
-  --popover-foreground: oklch(0.25 0.01 60);
-  --primary: oklch(0.68 0.1 140);
-  --primary-foreground: oklch(0.99 0.002 90);
+  --foreground: oklch(0.22 0.01 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.01 60);
+  --primary: oklch(0.62 0.12 145);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.95 0.01 90);
   --secondary-foreground: oklch(0.35 0.01 60);
   --muted: oklch(0.94 0.005 90);
-  --muted-foreground: oklch(0.5 0.01 60);
-  --accent: oklch(0.72 0.15 80);
-  --accent-foreground: oklch(0.2 0.01 60);
+  --muted-foreground: oklch(0.48 0.01 60);
+  --accent: oklch(0.72 0.16 75);
+  --accent-foreground: oklch(0.15 0.01 60);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0.01 90);
-  --input: oklch(0.9 0.01 90);
-  --ring: oklch(0.68 0.1 140);
+  --border: oklch(0.88 0.015 90);
+  --input: oklch(0.88 0.015 90);
+  --ring: oklch(0.62 0.12 145);
 }
 
 @layer base {
@@ -107,8 +110,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
-    font-size: 20px;
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -124,7 +127,7 @@
     @apply cursor-pointer;
   }
   ::selection {
-    background: oklch(0.68 0.1 140 / 0.2);
+    background: oklch(0.62 0.12 145 / 0.2);
   }
 }
 
@@ -156,7 +159,7 @@
 
   /* Article body prose styles */
   .article-body {
-    font-size: 20px;
+    font-size: 19px;
     line-height: 1.8;
   }
   .article-body p {
@@ -167,32 +170,40 @@
     font-weight: 600;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
-    color: oklch(0.25 0.01 60);
+    color: oklch(0.22 0.01 60);
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid oklch(0.62 0.12 145 / 0.15);
   }
   .article-body h3 {
     font-size: 22px;
     font-weight: 500;
     margin-top: 2em;
     margin-bottom: 0.6em;
+    color: oklch(0.3 0.01 60);
   }
   .article-body a {
-    color: oklch(0.68 0.1 140);
+    color: oklch(0.55 0.12 145);
     text-decoration: underline;
+    text-decoration-color: oklch(0.62 0.12 145 / 0.4);
     text-underline-offset: 3px;
-    transition: color 0.3s ease;
+    text-decoration-thickness: 1.5px;
+    transition: all 0.2s ease;
   }
   .article-body a:hover {
-    color: oklch(0.72 0.15 80);
+    color: oklch(0.45 0.1 145);
+    text-decoration-color: oklch(0.62 0.12 145 / 0.8);
   }
   .article-body blockquote {
-    border-left: 3px solid oklch(0.72 0.15 80);
-    padding-left: 1.5em;
+    border-left: 4px solid oklch(0.72 0.16 75);
+    padding: 1.2em 1.5em;
     margin: 2em 0;
+    background: oklch(0.72 0.16 75 / 0.06);
+    border-radius: 0 8px 8px 0;
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 1.15em;
+    font-size: 1.1em;
     line-height: 1.6;
     font-style: italic;
-    color: oklch(0.35 0.01 60);
+    color: oklch(0.3 0.01 60);
   }
   .article-body ul, .article-body ol {
     margin-bottom: 1.5em;
@@ -201,8 +212,12 @@
   .article-body li {
     margin-bottom: 0.5em;
   }
+  .article-body li::marker {
+    color: oklch(0.62 0.12 145);
+  }
   .article-body strong {
     font-weight: 700;
+    color: oklch(0.22 0.01 60);
   }
   .article-body em {
     font-style: italic;
@@ -211,33 +226,75 @@
   /* Pull quote */
   .pull-quote {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.15;
+    font-size: clamp(28px, 4.5vw, 48px);
+    line-height: 1.2;
     font-weight: 300;
-    color: oklch(0.3 0.01 60);
+    color: oklch(0.22 0.01 60);
     letter-spacing: -0.02em;
   }
 
   /* Breathing divider */
   .breathing-divider {
-    height: 1px;
-    background: oklch(0.68 0.1 140 / 0.3);
-    margin: 3rem 0;
-    animation: breathe 4s ease-in-out infinite;
-  }
-  @keyframes breathe {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
+    height: 2px;
+    background: linear-gradient(90deg, transparent, oklch(0.62 0.12 145 / 0.4), oklch(0.72 0.16 75 / 0.4), transparent);
+    margin: 2rem 0;
   }
 
   /* Fade-up animation */
   .fade-up {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Article card hover effect */
+  .article-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px oklch(0.62 0.12 145 / 0.1);
+  }
+
+  /* Sage section background */
+  .section-sage {
+    background: linear-gradient(135deg, oklch(0.94 0.04 145) 0%, oklch(0.96 0.02 120) 100%);
+  }
+
+  /* Amber accent section */
+  .section-amber {
+    background: linear-gradient(135deg, oklch(0.96 0.03 75) 0%, oklch(0.97 0.005 90) 100%);
+  }
+
+  /* Category badge */
+  .category-badge {
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    background: oklch(0.62 0.12 145 / 0.1);
+    color: oklch(0.5 0.1 145);
+    transition: all 0.2s ease;
+  }
+  .category-badge:hover {
+    background: oklch(0.62 0.12 145 / 0.2);
+  }
+
+  /* Image hover zoom */
+  .img-zoom {
+    overflow: hidden;
+  }
+  .img-zoom img {
+    transition: transform 0.5s ease;
+  }
+  .img-zoom:hover img {
+    transform: scale(1.05);
   }
 }
