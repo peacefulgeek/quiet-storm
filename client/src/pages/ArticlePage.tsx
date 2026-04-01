@@ -164,6 +164,13 @@ export default function ArticlePage() {
             </nav>
           )}
 
+          {/* Affiliate Disclosure (if product article) */}
+          {article.hasAffiliateLinks && (
+            <div className="mb-6 px-4 py-3 rounded-lg text-sm border" style={{ background: "oklch(0.97 0.02 75 / 0.5)", borderColor: "oklch(0.85 0.08 75 / 0.4)", color: "oklch(0.35 0.05 75)" }}>
+              This article contains affiliate links. We may earn a small commission if you make a purchase — at no extra cost to you.
+            </div>
+          )}
+
           {/* Article Body */}
           <div
             className="article-body"
@@ -241,6 +248,13 @@ export default function ArticlePage() {
           <div className="sticky top-24 space-y-8">
             {/* Kalesh Bio */}
             <div className="p-5 rounded-xl" style={{ background: "linear-gradient(135deg, oklch(0.94 0.04 145 / 0.5), oklch(0.97 0.005 90))" }}>
+              <img
+                src={SITE_CONFIG.authorImage}
+                alt={SITE_CONFIG.author}
+                className="w-16 h-16 rounded-full object-cover mb-3 border-2"
+                style={{ borderColor: "oklch(0.62 0.12 145 / 0.3)" }}
+                loading="lazy"
+              />
               <p className="font-heading text-base font-semibold mb-1 text-foreground">
                 {SITE_CONFIG.author}
               </p>
@@ -326,6 +340,13 @@ export default function ArticlePage() {
       <div className="lg:hidden max-w-[720px] mx-auto px-4 sm:px-6 pb-16">
         {/* Bio */}
         <div className="p-5 rounded-xl mb-8" style={{ background: "linear-gradient(135deg, oklch(0.94 0.04 145 / 0.5), oklch(0.97 0.005 90))" }}>
+          <img
+            src={SITE_CONFIG.authorImage}
+            alt={SITE_CONFIG.author}
+            className="w-16 h-16 rounded-full object-cover mb-3 border-2"
+            style={{ borderColor: "oklch(0.62 0.12 145 / 0.3)" }}
+            loading="lazy"
+          />
           <p className="font-heading text-base font-semibold mb-1 text-foreground">
             {SITE_CONFIG.author}
           </p>

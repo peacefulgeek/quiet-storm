@@ -39,6 +39,7 @@ function Header({ currentPath }: { currentPath: string }) {
     { href: "/articles", label: "Articles" },
     { href: "/calm-now", label: "Calm Now" },
     { href: "/about", label: "About" },
+    { href: "/tools", label: "Tools" },
   ];
 
   const isActive = (href: string) => {
@@ -196,6 +197,12 @@ function Footer({ publishedCount }: { publishedCount: number }) {
                 <Link href="/quizzes" className="block text-sm no-underline transition-colors" style={{ color: "oklch(0.7 0.01 60)" }}>
                   Quizzes
                 </Link>
+                <Link href="/assessments" className="block text-sm no-underline transition-colors" style={{ color: "oklch(0.7 0.01 60)" }}>
+                  Assessments
+                </Link>
+                <Link href="/tools" className="block text-sm no-underline transition-colors" style={{ color: "oklch(0.7 0.01 60)" }}>
+                  Tools We Recommend
+                </Link>
                 <Link href="/about" className="block text-sm no-underline transition-colors" style={{ color: "oklch(0.7 0.01 60)" }}>
                   About
                 </Link>
@@ -223,6 +230,9 @@ function Footer({ publishedCount }: { publishedCount: number }) {
               It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice
               of a qualified health provider with any questions you may have. If you are
               in crisis, contact the 988 Suicide &amp; Crisis Lifeline by calling or texting 988.
+            </p>
+            <p className="text-xs mt-3" style={{ color: "oklch(0.45 0.01 60)" }}>
+              As an Amazon Associate I earn from qualifying purchases.
             </p>
           </div>
         </div>

@@ -14,6 +14,8 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import CalmNow from "./pages/CalmNow";
 import QuizPage from "./pages/QuizPage";
+import Tools from "./pages/Tools";
+import Assessments from "./pages/Assessments";
 
 function Router() {
   return (
@@ -28,6 +30,9 @@ function Router() {
       <Route path="/terms" component={Terms} />
       <Route path="/calm-now" component={CalmNow} />
       <Route path="/quiz/:quizSlug" component={QuizPage} />
+      <Route path="/quizzes" component={Assessments} />
+      <Route path="/tools" component={Tools} />
+      <Route path="/assessments" component={Assessments} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

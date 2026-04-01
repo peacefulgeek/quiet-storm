@@ -22,12 +22,11 @@ export default function Privacy() {
       </section>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
         <div className="space-y-8 text-foreground leading-relaxed">
           <section>
             <h2 className="font-heading text-xl font-medium mb-3">What We Collect</h2>
             <p>
-              If you subscribe to our newsletter, we collect your email address. That's it. We do not collect names, phone numbers, payment information, or any other personal data. We do not use tracking cookies for advertising. We do not sell, rent, or share your email address with third parties.
+              If you subscribe to our newsletter, we collect your email address. That is the only personal data we collect. We do not collect names, phone numbers, payment information, or any other personal data. We do not use tracking cookies for advertising. We do not sell, rent, or share your email address with third parties.
             </p>
           </section>
 
@@ -53,9 +52,19 @@ export default function Privacy() {
           </section>
 
           <section>
+            <h2 className="font-heading text-xl font-medium mb-3">Affiliate Disclosure</h2>
+            <p>
+              As an Amazon Associate I earn from qualifying purchases.
+            </p>
+            <p className="mt-3">
+              This site is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. Some links on this site are affiliate links, meaning we may earn a small commission at no additional cost to you.
+            </p>
+          </section>
+
+          <section>
             <h2 className="font-heading text-xl font-medium mb-3">Your Rights</h2>
             <p>
-              You may request deletion of your email address at any time by contacting us. Under GDPR, CCPA, and similar regulations, you have the right to access, correct, or delete your personal data. Since we only store email addresses, deletion is straightforward and permanent.
+              You may request deletion of your email address at any time. Under GDPR, CCPA, and similar regulations, you have the right to access, correct, or delete your personal data. Since we only store email addresses, deletion is straightforward and permanent.
             </p>
           </section>
 

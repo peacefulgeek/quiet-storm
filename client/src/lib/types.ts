@@ -14,11 +14,12 @@ export interface Article {
   openerType: 'scene-setting' | 'provocation' | 'first-person' | 'question' | 'named-reference' | 'gut-punch';
   faqCount: number;
   faqs: { question: string; answer: string }[];
-  backlinkType: 'kalesh' | 'external' | 'internal';
+  backlinkType: 'kalesh' | 'external' | 'internal' | 'product' | 'intermediary' | 'org-nofollow' | 'internal-only';
   conclusionType: 'challenge' | 'tender';
   namedReferences: string[];
   voicePhrases: number[];
   internalLinks: string[];
+  hasAffiliateLinks?: boolean;
 }
 
 export interface Category {
@@ -72,4 +73,5 @@ export const SITE_CONFIG = {
   authorBio: "Kalesh is a consciousness teacher and writer whose work explores the intersection of ancient contemplative traditions and modern neuroscience. With decades of practice in meditation, breathwork, and somatic inquiry, he guides others toward embodied awareness.",
   authorLink: "https://kalesh.love",
   authorLinkText: "Visit Kalesh's Website",
+  authorImage: "https://quiet-storm.b-cdn.net/images/kalesh-author.webp",
 };
