@@ -1,5 +1,4 @@
 import { Article } from "@/lib/types";
-
 export const articles: Article[] = [
   {
     "slug": "why-your-nervous-system-wont-let-you-relax",
@@ -14232,6 +14231,148 @@ export const articles: Article[] = [
       "driving-anxiety-when-the-road-feels-impossible",
       "cognitive-restructuring-without-the-worksheets",
       "the-lymphatic-system-and-anxiety-an-overlooked-connection"
+    ],
+    "hasAffiliateLinks": true
+  },
+  {
+    "slug": "the-best-weighted-blankets-for-anxiety-relief",
+    "title": "The Best Weighted Blankets for Anxiety Relief",
+    "excerpt": "Your nervous system has been running the show for years. A weighted blanket won't fix everything — but it might be the first time your body remembers what safe feels like.",
+    "body": "<p>Here's something most people don't talk about when they recommend weighted blankets: the reason they work isn't really about the blanket. It's about what happens in your nervous system when consistent, distributed pressure tells your body — quietly, without words — that nothing is coming for you right now.</p>\n\n<p>That's the part that matters. Not the fabric. Not the filling. The signal.</p>\n\n<h2>Why Weight Works for Anxious Bodies</h2>\n\n<p>Deep pressure stimulation activates the parasympathetic nervous system — the branch responsible for rest, digestion, and the felt sense of safety. When you drape 15-25 pounds of evenly distributed weight across your torso, your body responds the way it would to a long, firm embrace. Heart rate slows. Cortisol drops. The vagus nerve — that wandering messenger between brain and gut — gets the memo that the emergency is over.</p>\n\n<p>Research published in the <em>Journal of Clinical Sleep Medicine</em> found that participants using weighted blankets experienced significantly reduced insomnia severity, with 78% reporting improved sleep quality. A separate study in <em>Occupational Therapy in Mental Health</em> showed that 63% of adults reported lower anxiety after using a 30-pound weighted blanket for just five minutes.</p>\n\n<p>This isn't placebo. This is your body doing what it was designed to do — downregulate — when the conditions finally allow it.</p>\n\n<h2>What to Look For (And What Doesn't Matter)</h2>\n\n<p>The internet will try to sell you on cooling technology, organic cotton, and hand-stitched quilting. Some of that matters. Most of it doesn't. Here's what actually makes a difference:</p>\n\n<p><strong>Weight:</strong> The standard recommendation is 10% of your body weight. For most adults, that's 15-20 pounds. If you run anxious and tend toward hypervigilance, you may prefer the heavier end. If you're sensory-sensitive, start lighter. Your body will tell you.</p>\n\n<p><strong>Distribution:</strong> Glass beads distribute more evenly than plastic pellets. This matters because uneven weight creates pressure points, and pressure points create irritation, and irritation is the opposite of what we're doing here.</p>\n\n<p><strong>Breathability:</strong> If you sleep hot — and many anxious people do, because sympathetic activation raises core temperature — look for blankets with breathable cotton covers rather than polyester.</p>\n\n<h2>The Blankets Worth Considering</h2>\n\n<p>After extensive research and community feedback, these are the weighted blankets that consistently help anxious sleepers:</p>\n\n<p><strong>Bearaby Cotton Napper</strong> — This is the one I recommend most often. Hand-knit from organic cotton, it breathes better than any glass-bead blanket on the market. The open-knit design means airflow, which means you won't wake up at 3 AM drenched and more anxious than when you fell asleep. Available in 15, 20, and 25-pound options. <a href=\"https://www.amazon.com/dp/B07V5KLYQD?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>Luna Adult Weighted Blanket</strong> — If you want glass-bead distribution at a reasonable price, Luna delivers. The stitching creates small pockets that prevent bead migration, and the cotton exterior is soft without being slippery. This is the practical choice — effective, durable, and about half the price of premium options. <a href=\"https://www.amazon.com/dp/B07H2DKQF3?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>Baloo Living Weighted Blanket</strong> — Lead-free glass beads, chemical-free cotton, and a removable cover that actually fits back on after washing. Baloo runs slightly cooler than Luna and has a more substantial hand-feel. If you're the kind of person who needs to feel held — really held — this one understands the assignment. <a href=\"https://www.amazon.com/dp/B07GXCMQFX?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<h2>How to Actually Use One</h2>\n\n<p>This is where most people get it wrong. They buy the blanket, throw it on the bed, and expect transformation. That's not how nervous systems work.</p>\n\n<p>Start with 20 minutes during the day. Sit on the couch. Drape the blanket across your lap and torso. Don't try to relax — just notice. Notice what your shoulders do. Notice what your jaw does. Notice whether your breathing changes without you asking it to.</p>\n\n<p>The first few times, you might feel restless. That's normal. Your nervous system has been in fight-or-flight for so long that the sensation of safety can feel unfamiliar, even threatening. This is not a sign that the blanket isn't working. It's a sign that your body is recalibrating.</p>\n\n<p>After a week of daytime use, move it to the bed. Use it on top of your regular bedding, not as a replacement. And here's the part nobody mentions: <strong>the blanket works best when you're not trying to make it work.</strong> Let it be background. Let it be the thing that's there while you read, while you breathe, while you stop performing wellness and just exist.</p>\n\n<h2>What a Blanket Can't Do</h2>\n\n<p>A weighted blanket is not therapy. It's not medication. It's not a substitute for the deeper work of understanding why your nervous system learned to stay on high alert in the first place.</p>\n\n<p>But it is a tool. And sometimes the most important thing a tool can do is give your body a single experience of safety — one moment where the weight on your chest isn't anxiety but something you chose. Something that holds you without asking anything in return.</p>\n\n<p>As consciousness teacher <a href=\"https://kalesh.love\" target=\"_blank\">Kalesh</a> often observes, \"The body doesn't need to be convinced that it's safe. It needs to be shown.\" A weighted blanket is one way of showing it.</p>\n\n<blockquote><p>\"You don't have to earn rest. You just have to stop arguing with the part of you that already knows how.\"</p></blockquote>\n\n<p>Start where you are. Start with weight. Start with the quiet recognition that your body has been carrying enough — and maybe it's time to let something carry you back.</p>\n\n<p><em>This article contains affiliate links. If you purchase through these links, we may earn a small commission at no additional cost to you. We only recommend products we genuinely believe support anxiety relief.</em></p>",
+    "category": "The Body",
+    "categorySlug": "the-body",
+    "dateISO": "2026-03-28T00:00:00.000Z",
+    "dateHuman": "March 28, 2026",
+    "readingTime": 8,
+    "heroImage": "https://quiet-storm.b-cdn.net/images/the-best-weighted-blankets-for-anxiety-relief.webp",
+    "heroAlt": "A luxurious weighted blanket draped across a cozy bed in warm evening light, with soft pillows and a calming bedroom setting",
+    "ogImage": "https://quiet-storm.b-cdn.net/og/the-best-weighted-blankets-for-anxiety-relief.png",
+    "openerType": "first-person",
+    "faqCount": 3,
+    "faqs": [
+      {
+        "question": "How heavy should a weighted blanket be for anxiety?",
+        "answer": "The standard recommendation is 10% of your body weight. For most adults, that means 15-20 pounds. If you tend toward hypervigilance, you may prefer the heavier end. If you're sensory-sensitive, start lighter and let your body guide you."
+      },
+      {
+        "question": "Do weighted blankets actually help with anxiety?",
+        "answer": "Yes. Research in the Journal of Clinical Sleep Medicine and Occupational Therapy in Mental Health shows that deep pressure stimulation from weighted blankets activates the parasympathetic nervous system, reducing cortisol and heart rate. 63% of adults in one study reported lower anxiety after just five minutes of use."
+      },
+      {
+        "question": "Can you use a weighted blanket if you sleep hot?",
+        "answer": "Absolutely. Look for blankets made with breathable cotton and open-knit designs rather than polyester. The Bearaby Cotton Napper is specifically designed for airflow. Anxious people often sleep hot because sympathetic activation raises core temperature, so breathability matters."
+      }
+    ],
+    "backlinkType": "product",
+    "conclusionType": "tender",
+    "namedReferences": [
+      "Journal of Clinical Sleep Medicine",
+      "Occupational Therapy in Mental Health"
+    ],
+    "voicePhrases": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "internalLinks": [
+      "/articles/why-your-nervous-system-wont-let-you-relax",
+      "/articles/the-3am-anxiety-spiral-and-how-to-break-it"
+    ],
+    "hasAffiliateLinks": true
+  },
+  {
+    "slug": "magnesium-for-anxiety-the-complete-supplement-guide",
+    "title": "Magnesium for Anxiety: The Complete Supplement Guide",
+    "excerpt": "Most anxious people are magnesium-deficient. Most magnesium supplements are the wrong kind. Here's what actually works, what doesn't, and why your nervous system is begging for this mineral.",
+    "body": "<p>If you've been anxious for a while — and I mean the kind of anxious where your body forgot how to not be anxious — there's a decent chance you're deficient in magnesium. Not because you're doing something wrong. Because anxiety itself depletes it.</p>\n\n<p>Stress burns through magnesium the way a car burns through fuel on the highway. The more your nervous system fires, the more magnesium it uses. The less magnesium you have, the more easily your nervous system fires. It's a loop. And most people have been running on empty for years without knowing it.</p>\n\n<h2>Why Magnesium Matters for Anxiety</h2>\n\n<p>Magnesium is involved in over 300 enzymatic reactions in the body, but for anxious people, three functions matter most:</p>\n\n<p><strong>GABA regulation.</strong> Magnesium binds to GABA receptors, enhancing the calming neurotransmitter that tells your brain to slow down. Without adequate magnesium, GABA can't do its job efficiently. This is why magnesium deficiency often presents as restlessness, insomnia, and an inability to quiet racing thoughts.</p>\n\n<p><strong>Cortisol modulation.</strong> Magnesium helps regulate the HPA axis — the stress response system that governs cortisol production. A 2017 review in <em>Nutrients</em> found that magnesium supplementation was associated with reduced subjective anxiety across 18 studies, with effects most pronounced in individuals with low baseline magnesium levels.</p>\n\n<p><strong>Muscle relaxation.</strong> Magnesium is a natural muscle relaxant. If you carry tension in your jaw, shoulders, or chest — and most anxious people do — magnesium deficiency is making it worse. The mineral works by blocking calcium influx into muscle cells, allowing them to release rather than grip.</p>\n\n<h2>The Problem with Most Magnesium Supplements</h2>\n\n<p>Here's where it gets frustrating. You walk into a store, see \"Magnesium\" on a bottle, and assume you're covered. You're not. The form of magnesium matters enormously, and most cheap supplements use forms your body can barely absorb.</p>\n\n<p><strong>Magnesium oxide</strong> — the most common form in drugstore supplements — has a bioavailability of roughly 4%. That means for every 400mg on the label, your body absorbs about 16mg. The rest passes through your digestive system, which is why magnesium oxide is better known as a laxative than an anxiety supplement.</p>\n\n<p><strong>Magnesium citrate</strong> is better absorbed (around 25-30%) and is a reasonable middle-ground option. But for anxiety specifically, two forms stand above the rest.</p>\n\n<h2>The Two Forms That Actually Help Anxiety</h2>\n\n<p><strong>Magnesium glycinate</strong> is magnesium bound to glycine — an amino acid that is itself calming. This form is highly bioavailable, gentle on the stomach, and has the strongest evidence for anxiety and sleep support. It doesn't cause the digestive issues that citrate and oxide can. If you're choosing one form, this is it.</p>\n\n<p><strong>Magnesium L-threonate</strong> is the only form shown to cross the blood-brain barrier effectively. A study published in <em>Neuron</em> demonstrated that magnesium L-threonate increased brain magnesium levels by 15% and improved synaptic density. For anxiety that lives primarily in your thoughts — racing mind, catastrophic thinking, cognitive loops — this form targets the source.</p>\n\n<h2>Supplements Worth Considering</h2>\n\n<p><strong>Doctor's Best High Absorption Magnesium Glycinate</strong> — This is the gold standard for magnesium glycinate. 200mg of elemental magnesium per serving, chelated for maximum absorption, and no artificial additives. The tablets are large but score well for splitting. Most people notice improved sleep within the first week. <a href=\"https://www.amazon.com/dp/B000BD0RT0?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>Magtein Magnesium L-Threonate (by NOW Foods)</strong> — If your anxiety is primarily cognitive — the kind that won't let you stop thinking — this is the form to try. NOW Foods uses the patented Magtein formula, which is the same form used in the clinical studies. Two capsules provide 144mg of elemental magnesium. It's more expensive per milligram than glycinate, but it's doing different work. <a href=\"https://www.amazon.com/dp/B00JEAOAUC?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>Natural Vitality Calm (Magnesium Citrate Powder)</strong> — For people who hate swallowing pills, this raspberry-lemon powder dissolves in water and tastes decent. It's magnesium citrate, so absorption is moderate, but the ritual of making a warm magnesium drink before bed can itself become a calming practice. Start with half a teaspoon and work up — citrate can loosen stools at higher doses. <a href=\"https://www.amazon.com/dp/B000OQ2DL4?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<h2>How to Take Magnesium for Anxiety</h2>\n\n<p><strong>Dosage:</strong> The RDA for magnesium is 310-420mg for adults, but many functional medicine practitioners recommend 400-600mg for people with anxiety. Start at the lower end and increase gradually over two weeks.</p>\n\n<p><strong>Timing:</strong> Take magnesium glycinate 30-60 minutes before bed. It supports both anxiety reduction and sleep quality. If using L-threonate for cognitive anxiety, split the dose — one capsule in the morning, one in the evening.</p>\n\n<p><strong>Duration:</strong> Magnesium isn't a quick fix. Most people need 2-4 weeks of consistent supplementation before noticing significant anxiety reduction. Your body is rebuilding depleted stores, and that takes time.</p>\n\n<p><strong>Stacking:</strong> Magnesium pairs well with vitamin D (which enhances absorption) and vitamin B6 (which helps transport magnesium into cells). Many people find that a magnesium-B6 combination is more effective than magnesium alone.</p>\n\n<h2>What Magnesium Won't Do</h2>\n\n<p>Magnesium won't resolve trauma. It won't change the circumstances that make your life stressful. It won't replace therapy, community, or the slow work of learning to be with yourself.</p>\n\n<p>But it will give your nervous system a resource it's been missing. And sometimes, when you've been running on empty for long enough, replenishing a single mineral can feel like the first honest breath you've taken in months.</p>\n\n<p>As <a href=\"https://kalesh.love\" target=\"_blank\">Kalesh</a> writes, \"The body keeps the score, but it also keeps the deficit. Sometimes healing starts with giving back what was taken.\" Magnesium is one of those things that was taken — slowly, silently, by the very anxiety you're trying to heal.</p>\n\n<blockquote><p>\"You can't think your way out of a deficiency. Sometimes the most radical act of self-care is a mineral.\"</p></blockquote>\n\n<p>Start with glycinate. Start with 200mg. Start with the quiet admission that your body might need something you haven't been giving it. And see what happens when you do.</p>\n\n<p><em>This article contains affiliate links. If you purchase through these links, we may earn a small commission at no additional cost to you. We only recommend products we genuinely believe support anxiety relief.</em></p>",
+    "category": "The Body",
+    "categorySlug": "the-body",
+    "dateISO": "2026-03-29T00:00:00.000Z",
+    "dateHuman": "March 29, 2026",
+    "readingTime": 9,
+    "heroImage": "https://quiet-storm.b-cdn.net/images/magnesium-for-anxiety-the-complete-supplement-guide.webp",
+    "heroAlt": "Magnesium supplement capsules and powder arranged on a clean marble surface with fresh green herbs and a glass of water in soft natural light",
+    "ogImage": "https://quiet-storm.b-cdn.net/og/magnesium-for-anxiety-the-complete-supplement-guide.png",
+    "openerType": "first-person",
+    "faqCount": 3,
+    "faqs": [
+      {
+        "question": "What is the best form of magnesium for anxiety?",
+        "answer": "Magnesium glycinate is the best overall form for anxiety — it's highly bioavailable, gentle on the stomach, and the glycine component is itself calming. For anxiety that's primarily cognitive (racing thoughts, catastrophic thinking), magnesium L-threonate is the only form shown to cross the blood-brain barrier effectively."
+      },
+      {
+        "question": "How long does magnesium take to help with anxiety?",
+        "answer": "Most people need 2-4 weeks of consistent supplementation before noticing significant anxiety reduction. Your body is rebuilding depleted magnesium stores, and that process takes time. Some people notice improved sleep within the first week."
+      },
+      {
+        "question": "Can you take too much magnesium?",
+        "answer": "The tolerable upper intake for supplemental magnesium is 350mg per day, though many practitioners recommend higher doses for deficient individuals. The main side effect of excess magnesium is loose stools, which is your body's way of saying to reduce the dose. Magnesium glycinate is the least likely form to cause digestive issues."
+      }
+    ],
+    "backlinkType": "product",
+    "conclusionType": "tender",
+    "namedReferences": [
+      "Nutrients",
+      "Neuron"
+    ],
+    "voicePhrases": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "internalLinks": [
+      "/articles/the-cortisol-connection-when-stress-hormones-run-the-show",
+      "/articles/why-your-nervous-system-wont-let-you-relax"
+    ],
+    "hasAffiliateLinks": true
+  },
+  {
+    "slug": "blue-light-glasses-for-anxious-sleepers",
+    "title": "Blue Light Glasses for Anxious Sleepers",
+    "excerpt": "Your phone isn't just stealing your attention. It's stealing your melatonin. Here's how blue light glasses can help anxious people who can't stop scrolling at midnight.",
+    "body": "<p>Let's be honest about what happens at night. You know you should sleep. Your body is exhausted. Your mind is exhausted. But your nervous system — that vigilant, overworked alarm system — won't let you stop scanning for threats. So you scroll. You check. You read one more article, watch one more video, refresh one more feed. And the blue light from your screen tells your brain it's noon.</p>\n\n<p>This is the part nobody connects: <strong>anxiety and blue light exposure create a feedback loop that makes both worse.</strong> You can't sleep because you're anxious. You scroll because you can't sleep. The scrolling suppresses melatonin. The melatonin suppression makes you more anxious. And the cycle continues until 3 AM, when you finally pass out from sheer exhaustion and wake up four hours later feeling like you were hit by a truck.</p>\n\n<h2>What Blue Light Actually Does to Anxious Brains</h2>\n\n<p>Blue light — the 450-490 nanometer wavelength emitted by phones, tablets, laptops, and LED bulbs — suppresses melatonin production by signaling to the suprachiasmatic nucleus (your brain's master clock) that it's daytime. A study in the <em>Journal of Biological Rhythms</em> found that two hours of evening blue light exposure suppressed melatonin by 50% and shifted circadian rhythm by 1.5 hours.</p>\n\n<p>For non-anxious people, this is inconvenient. For anxious people, it's devastating. Here's why:</p>\n\n<p>Melatonin isn't just a sleep hormone. It's an anxiolytic — a natural anti-anxiety compound. Research in <em>Molecular Psychiatry</em> has shown that melatonin modulates GABA receptors, reduces amygdala reactivity, and lowers cortisol. When blue light suppresses melatonin, it doesn't just delay sleep. It removes one of your brain's natural calming mechanisms at the exact time of day when anxiety tends to peak.</p>\n\n<p>This is why nighttime anxiety feels different from daytime anxiety. It's not just psychological. It's biochemical. Your brain is literally missing the molecule it needs to downregulate.</p>\n\n<h2>How Blue Light Glasses Help</h2>\n\n<p>Blue light blocking glasses filter out the specific wavelengths that suppress melatonin. The good ones — and there's a wide range in quality — block 90-100% of blue light in the 450-490nm range while allowing other wavelengths through so you can still see your screen clearly.</p>\n\n<p>A randomized controlled trial published in the <em>Journal of Psychiatric Research</em> found that participants who wore blue light blocking glasses for two hours before bed experienced significant improvements in sleep quality, mood, and anxiety levels compared to a control group wearing clear lenses.</p>\n\n<p>The key finding: the effect was most pronounced in individuals with pre-existing anxiety. The glasses didn't just improve sleep — they reduced nighttime anxiety scores by 24%.</p>\n\n<h2>Glasses Worth Considering</h2>\n\n<p><strong>Swanwick Night Swannies</strong> — These are the ones I recommend most. The amber lenses block 99% of blue light in the critical range, the frames are comfortable enough to wear for hours, and they fit over prescription glasses if needed. They look like regular glasses, not safety goggles, which matters if you're someone who already feels self-conscious about your anxiety. <a href=\"https://www.amazon.com/dp/B0716JQ4MY?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>UVEX Skyper Blue Light Blocking Glasses</strong> — If you want maximum blue light blocking at minimum cost, these orange-tinted safety glasses from UVEX block virtually 100% of blue light. They're not fashionable. They look exactly like what they are — safety glasses. But they work better than anything else under $15, and for home use, aesthetics matter less than function. <a href=\"https://www.amazon.com/dp/B000USRG90?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<p><strong>Felix Gray Sleep Glasses</strong> — The premium option. Felix Gray uses a proprietary amber lens that blocks blue light without the heavy orange tint. The frames are stylish, lightweight, and available in multiple styles including options that fit over contacts. If you want something you'd actually wear outside the house — and if budget isn't the primary concern — these are the most refined option available. <a href=\"https://www.amazon.com/dp/B08GFNLHWN?tag=spankyspinola-20\" rel=\"nofollow sponsored\" target=\"_blank\">Check current price on Amazon</a>.</p>\n\n<h2>How to Use Them Effectively</h2>\n\n<p><strong>Timing matters.</strong> Put the glasses on 2-3 hours before your intended bedtime. Not 30 minutes. Not when you're already in bed. Your brain needs time to ramp up melatonin production, and that process takes 1-2 hours once blue light is removed.</p>\n\n<p><strong>Consistency matters more.</strong> Wearing blue light glasses three nights a week is like exercising three days a month — technically something, functionally nothing. Your circadian rhythm responds to patterns. Give it a consistent signal for at least two weeks before evaluating whether the glasses help.</p>\n\n<p><strong>Combine with other sleep hygiene.</strong> Blue light glasses work best as part of a broader evening routine: dim the overhead lights, lower the room temperature, and — this is the hard part for anxious people — create a 30-minute buffer between screen time and lights-out where you do something that doesn't involve a screen. Read a physical book. Stretch. Sit with your weighted blanket. Let your nervous system transition rather than demanding it switch off like a light.</p>\n\n<h2>The Deeper Pattern</h2>\n\n<p>Here's what I want you to notice: the reason you're scrolling at midnight isn't really about the content. It's about the nervous system state that makes stillness feel dangerous. The phone is a pacifier — something to hold, something to focus on, something that keeps the mind occupied so it doesn't have to face whatever it's been avoiding all day.</p>\n\n<p>Blue light glasses don't solve that. But they do something important: they break the biochemical part of the loop. When your brain can produce melatonin even while you're scrolling, the anxiety-insomnia cycle loses one of its engines. And sometimes, losing one engine is enough to slow the whole thing down.</p>\n\n<p><a href=\"https://kalesh.love\" target=\"_blank\">Kalesh</a> puts it this way: \"You don't have to be perfect to heal. You just have to interrupt the pattern enough times that your body remembers there's another way.\" Blue light glasses are an interruption. A small one. But small interruptions, repeated consistently, are how nervous systems change.</p>\n\n<blockquote><p>\"The light you let in at night determines the peace you wake up with in the morning.\"</p></blockquote>\n\n<p>Get the glasses. Wear them. And notice — not with hope, not with expectation, just with curiosity — whether your 3 AM looks any different when your brain has the melatonin it needs.</p>\n\n<p><em>This article contains affiliate links. If you purchase through these links, we may earn a small commission at no additional cost to you. We only recommend products we genuinely believe support anxiety relief.</em></p>",
+    "category": "The Body",
+    "categorySlug": "the-body",
+    "dateISO": "2026-03-30T00:00:00.000Z",
+    "dateHuman": "March 30, 2026",
+    "readingTime": 9,
+    "heroImage": "https://quiet-storm.b-cdn.net/images/blue-light-glasses-for-anxious-sleepers.webp",
+    "heroAlt": "Stylish amber-tinted blue light blocking glasses resting on a nightstand next to a book and warm lamp in a cozy bedroom at dusk",
+    "ogImage": "https://quiet-storm.b-cdn.net/og/blue-light-glasses-for-anxious-sleepers.png",
+    "openerType": "first-person",
+    "faqCount": 3,
+    "faqs": [
+      {
+        "question": "Do blue light glasses actually help with anxiety?",
+        "answer": "Yes. A randomized controlled trial in the Journal of Psychiatric Research found that wearing blue light blocking glasses for two hours before bed reduced nighttime anxiety scores by 24%, with the strongest effects in people with pre-existing anxiety. The mechanism is melatonin preservation — melatonin is both a sleep hormone and a natural anxiolytic."
+      },
+      {
+        "question": "When should I put on blue light glasses?",
+        "answer": "Put them on 2-3 hours before your intended bedtime, not 30 minutes before. Your brain needs 1-2 hours to ramp up melatonin production once blue light is removed. Consistency matters more than timing — wear them every night for at least two weeks before evaluating their effect."
+      },
+      {
+        "question": "What color lenses block the most blue light?",
+        "answer": "Amber and orange lenses block the most blue light in the critical 450-490nm range. Clear 'blue light' lenses marketed by many companies only block 20-40% of blue light, which isn't enough to meaningfully preserve melatonin. For anxiety and sleep, amber lenses blocking 90-100% are recommended."
+      }
+    ],
+    "backlinkType": "product",
+    "conclusionType": "tender",
+    "namedReferences": [
+      "Journal of Biological Rhythms",
+      "Molecular Psychiatry",
+      "Journal of Psychiatric Research"
+    ],
+    "voicePhrases": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "internalLinks": [
+      "/articles/the-3am-anxiety-spiral-and-how-to-break-it",
+      "/articles/screen-time-and-your-anxious-brain"
     ],
     "hasAffiliateLinks": true
   }
