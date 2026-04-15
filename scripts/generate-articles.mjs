@@ -2,6 +2,14 @@
  * Auto-Gen Pipeline — Generate new articles via Anthropic Claude
  * ALL secrets from process.env (Render env vars). NEVER hardcode API keys.
  * Bunny CDN credentials stay in code per spec.
+ *
+ * HUMANIZATION RULES (baked in):
+ * - Word count: 1200-1800 words
+ * - Zero em-dashes (— or –)
+ * - Zero AI-flagged words (profound, transformative, holistic, nuanced, multifaceted, etc.)
+ * - Exactly 2 conversational interjections per article
+ * - Kalesh voice: direct, unflinching, compassionate, somatic + Vedantic
+ * - Varied sentence lengths, no repetitive starters
  */
 
 import fs from "fs";
@@ -32,9 +40,182 @@ const CATEGORIES = [
   { slug: "the-deeper-question", name: "The Deeper Question" },
 ];
 
+// ─── BANNED AI WORDS ───
+const BANNED_WORDS = [
+  "profound", "profoundly", "transformative", "holistic", "nuanced",
+  "multifaceted", "tapestry", "delve", "delves", "delving",
+  "embark", "embarking", "embarks", "realm", "realms",
+  "unveil", "unveils", "unveiling", "leverage", "leveraging", "leverages",
+  "paradigm", "paradigms", "synergy", "robust", "cutting-edge",
+  "groundbreaking", "pivotal", "fostering", "fosters", "foster",
+  "harnessing", "harness", "harnesses", "navigating", "navigate", "navigates",
+  "landscape", "landscapes", "intricate", "comprehensive",
+  "furthermore", "moreover", "encompasses", "encompass", "encompassing",
+  "myriad", "plethora", "utilize", "utilizes", "utilizing", "utilization",
+  "facilitate", "facilitates", "facilitating", "juxtaposition",
+  "dichotomy", "epitome", "culmination", "underpinning", "underpinnings",
+  "elucidates", "elucidate", "elucidating", "amalgamation",
+  "quintessential", "paramount", "meticulous", "meticulously",
+  "resonate", "resonates", "resonating", "resonance",
+];
+
+// ─── AI WORD REPLACEMENTS ───
+const AI_REPLACEMENTS = {
+  "profound": ["deep", "real", "striking", "significant", "genuine"],
+  "profoundly": ["deeply", "really", "genuinely", "remarkably"],
+  "transformative": ["life-changing", "game-changing", "powerful", "significant"],
+  "holistic": ["whole-person", "full-picture", "integrated", "complete"],
+  "nuanced": ["layered", "subtle", "complex", "detailed"],
+  "multifaceted": ["many-sided", "complex", "layered", "varied"],
+  "tapestry": ["fabric", "web", "pattern", "weave"],
+  "delve": ["dig into", "explore", "look at", "get into"],
+  "delves": ["digs into", "explores", "looks at", "gets into"],
+  "delving": ["digging into", "exploring", "looking at", "getting into"],
+  "embark": ["start", "begin", "set out on", "take on"],
+  "embarking": ["starting", "beginning", "setting out on"],
+  "embarks": ["starts", "begins", "sets out on"],
+  "realm": ["area", "space", "world", "territory", "domain"],
+  "realms": ["areas", "spaces", "worlds", "territories"],
+  "unveil": ["reveal", "show", "uncover", "expose"],
+  "unveils": ["reveals", "shows", "uncovers"],
+  "unveiling": ["revealing", "showing", "uncovering"],
+  "leverage": ["use", "tap into", "draw on", "work with"],
+  "leveraging": ["using", "tapping into", "drawing on"],
+  "leverages": ["uses", "taps into", "draws on"],
+  "paradigm": ["framework", "model", "approach", "way of thinking"],
+  "paradigms": ["frameworks", "models", "approaches"],
+  "synergy": ["connection", "overlap", "interplay"],
+  "robust": ["strong", "solid", "reliable", "sturdy"],
+  "cutting-edge": ["leading", "latest", "current", "modern"],
+  "groundbreaking": ["pioneering", "fresh", "original", "new"],
+  "pivotal": ["key", "critical", "central", "important"],
+  "fostering": ["building", "growing", "encouraging", "supporting"],
+  "fosters": ["builds", "grows", "encourages", "supports"],
+  "foster": ["build", "grow", "encourage", "support"],
+  "harnessing": ["using", "channeling", "working with"],
+  "harness": ["use", "channel", "work with"],
+  "harnesses": ["uses", "channels", "works with"],
+  "navigating": ["moving through", "working through", "handling"],
+  "navigate": ["move through", "work through", "handle"],
+  "navigates": ["moves through", "works through", "handles"],
+  "landscape": ["terrain", "field", "territory", "ground"],
+  "landscapes": ["terrains", "fields", "territories"],
+  "intricate": ["detailed", "complex", "elaborate", "involved"],
+  "comprehensive": ["full", "thorough", "complete", "wide-ranging"],
+  "furthermore": ["also", "and", "plus", "on top of that"],
+  "moreover": ["also", "on top of that", "and", "what's more"],
+  "encompasses": ["includes", "covers", "takes in", "holds"],
+  "encompass": ["include", "cover", "take in", "hold"],
+  "encompassing": ["including", "covering", "taking in"],
+  "myriad": ["many", "countless", "numerous", "a range of"],
+  "plethora": ["many", "plenty of", "a lot of", "a range of"],
+  "utilize": ["use", "apply", "work with"],
+  "utilizes": ["uses", "applies", "works with"],
+  "utilizing": ["using", "applying", "working with"],
+  "utilization": ["use", "application"],
+  "facilitate": ["help", "support", "enable", "make possible"],
+  "facilitates": ["helps", "supports", "enables"],
+  "facilitating": ["helping", "supporting", "enabling"],
+  "juxtaposition": ["contrast", "tension", "comparison"],
+  "dichotomy": ["split", "tension", "divide"],
+  "epitome": ["example", "model", "picture"],
+  "culmination": ["result", "peak", "outcome"],
+  "underpinning": ["foundation", "basis", "root"],
+  "underpinnings": ["foundations", "roots", "bases"],
+  "elucidates": ["explains", "clarifies", "shows"],
+  "elucidate": ["explain", "clarify", "show"],
+  "elucidating": ["explaining", "clarifying", "showing"],
+  "amalgamation": ["mix", "blend", "combination"],
+  "quintessential": ["classic", "typical", "perfect example of"],
+  "paramount": ["essential", "critical", "vital", "key"],
+  "meticulous": ["careful", "thorough", "detailed"],
+  "meticulously": ["carefully", "thoroughly", "with care"],
+  "resonate": ["connect", "land", "hit home", "ring true"],
+  "resonates": ["connects", "lands", "hits home", "rings true"],
+  "resonating": ["connecting", "landing", "hitting home"],
+  "resonance": ["connection", "echo", "pull"],
+};
+
+// ─── CONVERSATIONAL INTERJECTIONS ───
+const INTERJECTIONS = [
+  "Stay with me here.",
+  "I know, I know.",
+  "Wild, right?",
+  "Think about that for a second.",
+  "Here's the thing.",
+  "Bear with me on this.",
+  "Hang on - this part matters.",
+  "Real talk for a moment.",
+  "And honestly?",
+  "Look.",
+  "Here's what nobody tells you.",
+  "Let that land for a second.",
+  "Sit with that.",
+  "No, really.",
+  "This is the part that gets me.",
+  "Pay attention to this next part.",
+  "Here's where it gets interesting.",
+  "Stick with me.",
+  "I want to be honest about something.",
+  "Can I be real with you?",
+];
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
+
+/**
+ * Post-process article body to enforce humanization rules.
+ */
+function humanizeBody(body, slug) {
+  let text = body;
+
+  // 1. Remove ALL em-dashes and en-dashes
+  text = text.replace(/\u2014/g, " - ");
+  text = text.replace(/\u2013/g, " - ");
+
+  // 2. Replace AI words
+  for (const [word, alts] of Object.entries(AI_REPLACEMENTS)) {
+    const regex = new RegExp(`\\b${word.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, "gi");
+    text = text.replace(regex, (match) => {
+      const alt = alts[Math.floor(Math.random() * alts.length)];
+      if (match[0] === match[0].toUpperCase()) {
+        return alt.charAt(0).toUpperCase() + alt.slice(1);
+      }
+      return alt;
+    });
+  }
+
+  // 3. Add 2 conversational interjections
+  const hash = slug.split("").reduce((h, c) => ((h << 5) - h + c.charCodeAt(0)) | 0, 0);
+  const idx1 = Math.abs(hash) % INTERJECTIONS.length;
+  let idx2 = Math.abs(hash >> 8) % INTERJECTIONS.length;
+  if (idx2 === idx1) idx2 = (idx2 + 1) % INTERJECTIONS.length;
+
+  const paragraphs = text.split("</p>");
+  const total = paragraphs.length;
+  if (total >= 6) {
+    const pos1 = Math.max(2, Math.floor(total / 3));
+    const pos2 = Math.max(pos1 + 2, Math.floor(2 * total / 3));
+
+    if (pos2 < total) {
+      paragraphs.splice(pos2, 0, `<p>${INTERJECTIONS[idx2]}</p>`);
+    }
+    if (pos1 < total) {
+      paragraphs.splice(pos1, 0, `<p>${INTERJECTIONS[idx1]}</p>`);
+    }
+  }
+  text = paragraphs.join("</p>");
+
+  return text;
+}
+
+/**
+ * Count words in HTML text.
+ */
+function countWords(html) {
+  return html.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+}
 
 async function generateArticle() {
   if (!AUTO_GEN_ENABLED) {
@@ -65,6 +246,8 @@ async function generateArticle() {
     // ─── Step 1: Generate article content via Claude ───
     console.log(`[auto-gen] Generating article for category: ${category.name}`);
 
+    const bannedWordsList = BANNED_WORDS.join(", ");
+
     const articleResponse = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -78,9 +261,19 @@ async function generateArticle() {
         messages: [
           {
             role: "user",
-            content: `Write a 2,500-2,800 word article for The Quiet Storm, an anxiety wellness editorial. Category: ${category.name}.
+            content: `Write a 1400-1700 word article for The Quiet Storm, an anxiety wellness editorial. Category: ${category.name}.
 
-Voice: Kalesh — consciousness teacher and writer. Direct, unflinching, compassionate. Uses somatic and Vedantic frameworks. No toxic positivity. No listicle energy. 30% spiritual/healing threads woven throughout.
+Voice: Kalesh - consciousness teacher and writer. Direct, unflinching, compassionate. Uses somatic and Vedantic frameworks. No toxic positivity. No listicle energy. 30% spiritual/healing threads woven throughout. Conversational and truly connective - like talking to a wise friend who's been through it.
+
+CRITICAL HUMANIZATION RULES:
+- Word count MUST be between 1200 and 1800 words. Aim for 1400-1700.
+- ZERO em-dashes. Never use the character. Use " - " or "..." or " ~ " instead.
+- ZERO AI-flagged words. NEVER use any of these: ${bannedWordsList}
+- Include exactly 2 conversational interjections as standalone paragraphs (e.g., "Stay with me here.", "I know, I know.", "Wild, right?", "Think about that for a second.", "Here's the thing.")
+- Aggressively vary sentence lengths. Mix short punchy sentences with longer flowing ones.
+- Never start more than 2 sentences with "This" in a row. Vary starters.
+- Write like a real human. Use contractions. Be direct. Be warm. Be honest.
+- No corporate speak. No self-help cliches. No "journey of self-discovery" energy.
 
 Requirements:
 - Varied opener (scene-setting, provocation, first-person, question, named-reference, or gut-punch)
@@ -128,6 +321,29 @@ Output ONLY valid JSON with these exact keys:
 
     const article = JSON.parse(jsonMatch[0]);
     console.log(`[auto-gen] Article generated: ${article.title}`);
+
+    // ─── Step 1.5: Post-process humanization ───
+    console.log("[auto-gen] Applying humanization post-processing...");
+    article.body = humanizeBody(article.body, article.slug);
+    article.excerpt = article.excerpt.replace(/\u2014/g, " - ").replace(/\u2013/g, " - ");
+
+    // Replace AI words in FAQ answers
+    if (article.faqs) {
+      for (const faq of article.faqs) {
+        faq.answer = faq.answer.replace(/\u2014/g, " - ").replace(/\u2013/g, " - ");
+        for (const [word, alts] of Object.entries(AI_REPLACEMENTS)) {
+          const regex = new RegExp(`\\b${word.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}\\b`, "gi");
+          faq.answer = faq.answer.replace(regex, () => alts[Math.floor(Math.random() * alts.length)]);
+        }
+      }
+    }
+
+    // Verify word count
+    const wordCount = countWords(article.body);
+    console.log(`[auto-gen] Word count: ${wordCount}`);
+    if (wordCount < 1200 || wordCount > 1800) {
+      console.warn(`[auto-gen] Word count ${wordCount} outside 1200-1800 range. Proceeding anyway.`);
+    }
 
     // ─── Step 2: Generate hero image via FAL.ai ───
     console.log("[auto-gen] Generating hero image...");
@@ -196,7 +412,6 @@ Output ONLY valid JSON with these exact keys:
 
     // ─── Step 3: Build article object ───
     const now = new Date();
-    const wordCount = article.body.replace(/<[^>]+>/g, "").split(/\s+/).length;
 
     const articleObj = {
       slug: article.slug,

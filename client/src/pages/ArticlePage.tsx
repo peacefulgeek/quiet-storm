@@ -5,6 +5,7 @@ import { filterPublished, sortByDate } from "@/lib/utils";
 import SEO, { articleSchema } from "@/components/SEO";
 import Layout from "@/components/Layout";
 import NewsletterInline from "@/components/NewsletterInline";
+import { useAutoAffiliates, HealingJourneySection } from "@/components/AutoAffiliates";
 import { useEffect, useState, useMemo } from "react";
 
 export default function ArticlePage() {
@@ -75,6 +76,13 @@ export default function ArticlePage() {
   }, [article.body]);
 
   const category = CATEGORIES.find((c) => c.slug === article.categorySlug);
+
+  const { modifiedBody, healingJourneyProducts, hasProducts } = useAutoAffiliates({
+    articleTitle: article.title,
+    articleCategory: article.category,
+    articleBody: article.body,
+    articleSlug: article.slug,
+  });
 
   return (
     <Layout>
@@ -164,18 +172,21 @@ export default function ArticlePage() {
             </nav>
           )}
 
-          {/* Affiliate Disclosure (if product article) */}
-          {article.hasAffiliateLinks && (
+          {/* Affiliate Disclosure */}
+          {(article.hasAffiliateLinks || hasProducts) && (
             <div className="mb-6 px-4 py-3 rounded-lg text-sm border" style={{ background: "oklch(0.97 0.02 75 / 0.5)", borderColor: "oklch(0.85 0.08 75 / 0.4)", color: "oklch(0.35 0.05 75)" }}>
-              This article contains affiliate links. We may earn a small commission if you make a purchase — at no extra cost to you.
+              This article contains affiliate links. As an Amazon Associate, I earn from qualifying purchases - at no extra cost to you.
             </div>
           )}
 
           {/* Article Body */}
           <div
             className="article-body"
-            dangerouslySetInnerHTML={{ __html: article.body }}
+            dangerouslySetInnerHTML={{ __html: modifiedBody }}
           />
+
+          {/* Healing Journey - Product Recommendations */}
+          <HealingJourneySection products={healingJourneyProducts} slug={article.slug} />
 
           {/* FAQ Section */}
           {article.faqs && article.faqs.length > 0 && (
