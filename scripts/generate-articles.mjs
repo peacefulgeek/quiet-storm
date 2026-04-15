@@ -18,7 +18,7 @@ import { fileURLToPath } from "url";
 import { execSync } from "child_process";
 
 // ─── FEATURE FLAG (stays in code — not a secret) ───
-const AUTO_GEN_ENABLED = false; // Wildman flips to true on GitHub when ready
+const AUTO_GEN_ENABLED = true; // ENABLED — live article generation active
 
 // ─── FROM RENDER ENV VARS (auto-revoked if found in code) ───
 // ANTHROPIC_API_KEY, FAL_KEY, GH_PAT — all from process.env
