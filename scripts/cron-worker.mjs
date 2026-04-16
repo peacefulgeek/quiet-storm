@@ -4,20 +4,24 @@
  * Article Generation: Mon-Fri at 12:00 UTC (1 article per run)
  * Content Refresh (30-day): 1st of each month at 03:00 UTC
  * Content Refresh (90-day): 1st of Jan, Apr, Jul, Oct at 04:00 UTC
+ * Product Validation: Every Sunday at 03:00 UTC
  *
- * 600s timeout per generation, 1800s for refresh cycles.
+ * 600s timeout per generation, 1800s for refresh/validation cycles.
  */
 
 import { generateArticle, AUTO_GEN_ENABLED } from "./generate-articles.mjs";
 import { runContentRefresh } from "./content-refresh.mjs";
+import { runProductValidation } from "./validate-products.mjs";
 
 const CRON_INTERVAL_MS = 60 * 1000; // Check every minute
 const GEN_TIMEOUT_MS = 600 * 1000; // 600s for article generation
 const REFRESH_TIMEOUT_MS = 1800 * 1000; // 1800s for content refresh
+const VALIDATE_TIMEOUT_MS = 1800 * 1000; // 1800s for product validation
 
 let lastGenDate = null;
 let lastRefresh30Date = null;
 let lastRefresh90Date = null;
+let lastValidateWeek = null;
 
 function isWeekday(date) {
   const day = date.getUTCDay();
@@ -69,6 +73,24 @@ function shouldRefresh90(now) {
   return false;
 }
 
+function shouldValidateProducts(now) {
+  if (!AUTO_GEN_ENABLED) return false;
+
+  // Every Sunday at 03:00 UTC
+  if (now.getUTCDay() !== 0) return false;
+
+  // Use ISO week number to prevent running twice in same week
+  const weekStart = new Date(now);
+  weekStart.setUTCDate(now.getUTCDate() - now.getUTCDay());
+  const weekKey = weekStart.toISOString().slice(0, 10);
+  if (lastValidateWeek === weekKey) return false;
+
+  if (now.getUTCHours() === 3 && now.getUTCMinutes() === 0) {
+    return true;
+  }
+  return false;
+}
+
 async function runWithTimeout(fn, timeoutMs, label) {
   return new Promise((resolve) => {
     const timeout = setTimeout(() => {
@@ -95,6 +117,7 @@ function startCron() {
   console.log(`  - Article generation: Mon-Fri 12:00 UTC`);
   console.log(`  - 30-day refresh: 1st of month 03:00 UTC (25 articles)`);
   console.log(`  - 90-day refresh: Quarterly 04:00 UTC (20 articles)`);
+  console.log(`  - Product validation: Sunday 03:00 UTC (check all ASINs)`);
 
   setInterval(() => {
     const now = new Date();
@@ -131,6 +154,20 @@ function startCron() {
         () => runContentRefresh("90day"),
         REFRESH_TIMEOUT_MS,
         "90-day refresh"
+      );
+    }
+
+    // Weekly product validation
+    if (shouldValidateProducts(now)) {
+      const weekStart = new Date(now);
+      weekStart.setUTCDate(now.getUTCDate() - now.getUTCDay());
+      const weekKey = weekStart.toISOString().slice(0, 10);
+      console.log(`[cron] Triggering product validation at ${now.toISOString()}`);
+      lastValidateWeek = weekKey;
+      runWithTimeout(
+        () => runProductValidation(),
+        VALIDATE_TIMEOUT_MS,
+        "Product validation"
       );
     }
   }, CRON_INTERVAL_MS);

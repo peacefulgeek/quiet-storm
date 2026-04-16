@@ -131,10 +131,10 @@ function enforceAmazonLinks(body) {
     { name: "Apollo Neuro Wearable", asin: "B09BFHH1QM" },
     { name: "The Untethered Soul", asin: "1572245379" },
     { name: "The Power of Now", asin: "1577314808" },
-    { name: "Theragun Mini", asin: "B07VFXL7YR" },
+    { name: "Theragun Mini", asin: "B0892MWQR3" },
     { name: "Magnesium Glycinate", asin: "B00HD0ELFK" },
-    { name: "Weighted Blanket", asin: "B09CC6QFKV" },
-    { name: "Insight Timer Premium", asin: "B0BFWLVK5X" },
+    { name: "Weighted Blanket", asin: "B08YRXJM1V" },
+    { name: "Insight Timer Premium", asin: "B09GFPFQBQ" },
   ];
   const TEMPLATES = [
     `Something that pairs well with this kind of work is <a href="https://www.amazon.com/dp/{asin}?tag=${AFFILIATE_TAG}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).`,

@@ -281,7 +281,7 @@ AMAZON AFFILIATE LINKS (MANDATORY):
 - Use this exact format: <a href="https://www.amazon.com/dp/ASIN?tag=spankyspinola-20" target="_blank" rel="nofollow sponsored">Product Name</a> (paid link)
 - Spread the 4 links evenly through the article - roughly at 25%, 45%, 65%, and 85% through the body.
 - Each recommendation should be a soft, conversational sentence like: "Something that pairs well with this kind of work is [LINK]."
-- Use REAL ASINs for well-known products in the anxiety/wellness/mindfulness niche. Examples: 0143127748 (The Body Keeps the Score), 155643233X (Waking the Tiger), 0393712370 (Polyvagal Theory in Therapy), 1623170249 (Accessing the Healing Power of the Vagus Nerve), B004U3Y9FU (Nature Made B-Complex), B01LP0V1GI (Acupressure Mat), B07BGZQXNF (Muse 2 Headband), B09BFHH1QM (Apollo Neuro), B0BFWLVK5X (Insight Timer Gift Card), 1572245379 (The Untethered Soul), 1577314808 (The Power of Now), B07VFXL7YR (Theragun Mini), B00HD0ELFK (Magnesium Glycinate), B09CC6QFKV (Weighted Blanket).
+- Use REAL ASINs for well-known products in the anxiety/wellness/mindfulness niche. Examples: 0143127748 (The Body Keeps the Score), 155643233X (Waking the Tiger), 0393712370 (Polyvagal Theory in Therapy), 1623170249 (Accessing the Healing Power of the Vagus Nerve), B004U3Y9FU (Nature Made B-Complex), B01LP0V1GI (Acupressure Mat), B07BGZQXNF (Muse 2 Headband), B09BFHH1QM (Apollo Neuro), B09GFPFQBQ (Insight Timer Gift Card), 1572245379 (The Untethered Soul), 1577314808 (The Power of Now), B0892MWQR3 (Theragun Mini), B00HD0ELFK (Magnesium Glycinate), B08YRXJM1V (Weighted Blanket).
 - Pick products that are genuinely relevant to the specific article topic.
 
 Requirements:
@@ -366,10 +366,10 @@ Output ONLY valid JSON with these exact keys:
         { name: "Apollo Neuro Wearable", asin: "B09BFHH1QM" },
         { name: "The Untethered Soul", asin: "1572245379" },
         { name: "The Power of Now", asin: "1577314808" },
-        { name: "Theragun Mini", asin: "B07VFXL7YR" },
+        { name: "Theragun Mini", asin: "B0892MWQR3" },
         { name: "Magnesium Glycinate", asin: "B00HD0ELFK" },
-        { name: "Weighted Blanket", asin: "B09CC6QFKV" },
-        { name: "Insight Timer Premium", asin: "B0BFWLVK5X" },
+        { name: "Weighted Blanket", asin: "B08YRXJM1V" },
+        { name: "Insight Timer Premium", asin: "B09GFPFQBQ" },
       ];
       const LINK_TEMPLATES = [
         'Something that pairs well with this kind of work is <a href="https://www.amazon.com/dp/{asin}?tag={tag}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).',

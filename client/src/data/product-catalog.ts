@@ -84,7 +84,7 @@ export const products: Product[] = [
   },
   {
     name: "The Anxiety and Phobia Workbook",
-    asin: "1626253346",
+    asin: "1684034833",
     category: "books",
     subcategory: "anxiety-workbook",
     topicKeywords: ["anxiety", "phobia", "cbt", "workbook", "panic", "social anxiety", "coping"],
@@ -331,7 +331,7 @@ export const products: Product[] = [
   },
   {
     name: "NOW L-Theanine 200mg",
-    asin: "B0013OQGO6",
+    asin: "B0013OUKBO",
     category: "supplements",
     subcategory: "amino-acids",
     topicKeywords: ["l-theanine", "calm", "focus", "gaba", "relaxation", "tea", "amino acid"],
@@ -349,7 +349,7 @@ export const products: Product[] = [
   },
   {
     name: "Nature's Way Ashwagandha 500mg",
-    asin: "B0BFWLVK5X",
+    asin: "B09GFPFQBQ",
     category: "supplements",
     subcategory: "adaptogens",
     topicKeywords: ["ashwagandha", "adaptogen", "cortisol", "stress", "ayurveda", "herb"],
@@ -367,7 +367,7 @@ export const products: Product[] = [
   },
   {
     name: "Garden of Life Vitamin D3 5000 IU",
-    asin: "B00K5NEPJY",
+    asin: "B001FYKXNQ",
     category: "supplements",
     subcategory: "vitamins",
     topicKeywords: ["vitamin d", "mood", "immune", "sunshine", "deficiency"],
@@ -376,7 +376,7 @@ export const products: Product[] = [
   },
   {
     name: "Nordic Naturals Ultimate Omega",
-    asin: "B002CQU564",
+    asin: "B002TSIMW4",
     category: "supplements",
     subcategory: "omega-3",
     topicKeywords: ["omega-3", "fish oil", "brain", "inflammation", "mood", "dha", "epa"],
@@ -403,7 +403,7 @@ export const products: Product[] = [
   },
   {
     name: "Oregon's Wild Harvest Passionflower",
-    asin: "B001E0WMQM",
+    asin: "B01LP0V1GI",
     category: "supplements",
     subcategory: "herbs",
     topicKeywords: ["passionflower", "herb", "calm", "sleep", "gaba", "traditional"],
@@ -430,7 +430,7 @@ export const products: Product[] = [
   },
   {
     name: "Garden of Life Dr. Formulated Probiotics Mood+",
-    asin: "B01A6DNMDI",
+    asin: "B01BT2BFKQ",
     category: "supplements",
     subcategory: "probiotics",
     topicKeywords: ["probiotics", "gut", "mood", "microbiome", "gut-brain", "digestion"],
@@ -461,7 +461,7 @@ export const products: Product[] = [
   // ============================================
   {
     name: "TheraCane Massager",
-    asin: "B000PRMCJU",
+    asin: "B000GOUV5K",
     category: "body-tools",
     subcategory: "self-massage",
     topicKeywords: ["massage", "trigger point", "muscle", "tension", "shoulders", "back", "myofascial"],
@@ -497,7 +497,7 @@ export const products: Product[] = [
   },
   {
     name: "Theragun Mini Percussive Therapy Device",
-    asin: "B09CC6QFKV",
+    asin: "B08YRXJM1V",
     category: "body-tools",
     subcategory: "percussion",
     topicKeywords: ["massage", "percussion", "muscle", "tension", "recovery", "theragun"],
@@ -515,7 +515,7 @@ export const products: Product[] = [
   },
   {
     name: "Manduka PRO Yoga Mat",
-    asin: "B0028MBKP4",
+    asin: "B0040EGNIU",
     category: "body-tools",
     subcategory: "yoga",
     topicKeywords: ["yoga", "mat", "practice", "movement", "body", "meditation"],
@@ -533,7 +533,7 @@ export const products: Product[] = [
   },
   {
     name: "Lacrosse Ball Set for Trigger Point Therapy",
-    asin: "B07HL2S9GQ",
+    asin: "B07QBFG6PF",
     category: "body-tools",
     subcategory: "trigger-point",
     topicKeywords: ["trigger point", "massage", "muscle", "jaw", "tension", "tmj", "psoas"],
@@ -555,7 +555,7 @@ export const products: Product[] = [
   // ============================================
   {
     name: "YnM Weighted Blanket 15 lbs",
-    asin: "B073429DV2",
+    asin: "B08YRXJM1V",
     category: "sleep-aids",
     subcategory: "weighted-blanket",
     topicKeywords: ["weighted blanket", "sleep", "anxiety", "deep pressure", "calm", "insomnia"],
@@ -618,7 +618,7 @@ export const products: Product[] = [
   },
   {
     name: "Coop Home Goods Adjustable Pillow",
-    asin: "B00EINBSEW",
+    asin: "B00PCN4UVU",
     category: "sleep-aids",
     subcategory: "pillow",
     topicKeywords: ["sleep", "pillow", "neck", "comfort", "adjustable"],
@@ -658,7 +658,7 @@ export const products: Product[] = [
   },
   {
     name: "Insight Timer Premium (Gift Card)",
-    asin: "B0BFWLVK5X",
+    asin: "B09GFPFQBQ",
     category: "mindfulness-tools",
     subcategory: "app",
     topicKeywords: ["meditation", "app", "timer", "guided", "mindfulness", "practice"],
@@ -694,7 +694,7 @@ export const products: Product[] = [
   },
   {
     name: "Sand Meditation Garden Kit",
-    asin: "B07VFXL7YR",
+    asin: "B0892MWQR3",
     category: "mindfulness-tools",
     subcategory: "zen-garden",
     topicKeywords: ["zen", "garden", "sand", "meditation", "mindfulness", "desk", "calm"],
@@ -743,7 +743,7 @@ export const products: Product[] = [
   },
   {
     name: "Moleskine Classic Notebook",
-    asin: "B015NG45GW",
+    asin: "B01MAYGWNQ",
     category: "journals-planners",
     subcategory: "notebook",
     topicKeywords: ["journal", "notebook", "writing", "classic", "thoughts", "reflection"],
@@ -761,7 +761,7 @@ export const products: Product[] = [
   },
   {
     name: "Morning Sidekick Journal",
-    asin: "B07L9VL3NX",
+    asin: "B07WFXPYP7",
     category: "journals-planners",
     subcategory: "habit",
     topicKeywords: ["morning", "routine", "habit", "journal", "consistency", "ritual"],
@@ -868,7 +868,7 @@ export const products: Product[] = [
   },
   {
     name: "Walking Pad Under Desk Treadmill",
-    asin: "B0BGJMK9YN",
+    asin: "B0BJ9B1SQ8",
     category: "fitness-movement",
     subcategory: "walking",
     topicKeywords: ["walking", "movement", "exercise", "desk", "gentle", "daily"],
@@ -890,7 +890,7 @@ export const products: Product[] = [
   // ============================================
   {
     name: "Kindle Paperwhite",
-    asin: "B09TMN58KL",
+    asin: "1572245379",
     category: "tech-wellness",
     subcategory: "reading",
     topicKeywords: ["reading", "kindle", "screen", "blue light", "books", "evening"],
@@ -926,7 +926,7 @@ export const products: Product[] = [
   },
   {
     name: "Apple Watch SE",
-    asin: "B0CHX3QBCH",
+    asin: "B0BK3QJYXM",
     category: "tech-wellness",
     subcategory: "smartwatch",
     topicKeywords: ["hrv", "heart rate", "mindfulness", "breathing", "tracker", "health"],
@@ -948,7 +948,7 @@ export const products: Product[] = [
   },
   {
     name: "Heating Pad for Neck and Shoulders",
-    asin: "B00FGDI2EA",
+    asin: "B00DQFGJYQ",
     category: "comfort-items",
     subcategory: "heating-pad",
     topicKeywords: ["heating pad", "neck", "shoulders", "tension", "warmth", "muscle", "comfort"],
@@ -993,7 +993,7 @@ export const products: Product[] = [
   },
   {
     name: "Ember Temperature Control Mug",
-    asin: "B07NQPYGYD",
+    asin: "B00016AITS",
     category: "comfort-items",
     subcategory: "tea",
     topicKeywords: ["tea", "warm", "comfort", "ritual", "morning", "routine", "calm"],
@@ -1002,7 +1002,7 @@ export const products: Product[] = [
   },
   {
     name: "Yogi Tea Stress Relief Variety Pack",
-    asin: "B07PXMQBQX",
+    asin: "B07PRG2CQB",
     category: "comfort-items",
     subcategory: "tea",
     topicKeywords: ["tea", "herbal", "calm", "stress", "relaxation", "kava", "chamomile"],
@@ -1172,7 +1172,7 @@ export const products: Product[] = [
   },
   {
     name: "Life Extension Vitamin B6 100mg",
-    asin: "B000I4C2YE",
+    asin: "B00HD0ELFK",
     category: "supplements",
     subcategory: "b-vitamins",
     topicKeywords: ["b6", "vitamin", "serotonin", "neurotransmitter", "mood", "nervous system"],
@@ -1181,7 +1181,7 @@ export const products: Product[] = [
   },
   {
     name: "Thorne Zinc Picolinate",
-    asin: "B0797GRY9R",
+    asin: "B07BGZQXNF",
     category: "supplements",
     subcategory: "minerals",
     topicKeywords: ["zinc", "immune", "mood", "mineral", "brain", "neurotransmitter"],
@@ -1199,7 +1199,7 @@ export const products: Product[] = [
   },
   {
     name: "Holy Basil (Tulsi) Extract",
-    asin: "B0013OQIJW",
+    asin: "B004U3Y9FU",
     category: "supplements",
     subcategory: "adaptogens",
     topicKeywords: ["tulsi", "holy basil", "adaptogen", "ayurveda", "stress", "cortisol"],
@@ -1230,7 +1230,7 @@ export const products: Product[] = [
   },
   {
     name: "Ostrichpillow Loop Eye Mask",
-    asin: "B0BWXHXZQR",
+    asin: "B09BFHH1QM",
     category: "comfort-items",
     subcategory: "eye-mask",
     topicKeywords: ["eye mask", "sleep", "nap", "rest", "travel", "darkness", "comfort"],
@@ -1257,7 +1257,7 @@ export const products: Product[] = [
   },
   {
     name: "Aromatherapy Neck Wrap - Lavender",
-    asin: "B00FGDI2EA",
+    asin: "B00DQFGJYQ",
     category: "comfort-items",
     subcategory: "neck-wrap",
     topicKeywords: ["neck", "lavender", "heat", "aromatherapy", "tension", "shoulders", "comfort"],
@@ -1288,7 +1288,7 @@ export const products: Product[] = [
   },
   {
     name: "Gratitude Cards Deck",
-    asin: "B07VFXL7YR",
+    asin: "B0892MWQR3",
     category: "mindfulness-tools",
     subcategory: "cards",
     topicKeywords: ["gratitude", "cards", "reflection", "mindfulness", "daily", "practice"],
@@ -1390,7 +1390,7 @@ export const products: Product[] = [
   },
   {
     name: "Muse 2 Brain Sensing Headband",
-    asin: "B07HL2S9GQ",
+    asin: "B07QBFG6PF",
     category: "tech-wellness",
     subcategory: "biofeedback",
     topicKeywords: ["meditation", "biofeedback", "brain", "eeg", "focus", "calm", "neurofeedback"],
