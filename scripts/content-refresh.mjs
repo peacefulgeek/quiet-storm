@@ -115,6 +115,64 @@ function countWords(html) {
 }
 
 /**
+ * Ensure article body has 3-4 Amazon affiliate links.
+ * If fewer than 3, inject additional links from the product pool.
+ */
+function enforceAmazonLinks(body) {
+  const AFFILIATE_TAG = "spankyspinola-20";
+  const PRODUCT_POOL = [
+    { name: "The Body Keeps the Score", asin: "0143127748" },
+    { name: "Waking the Tiger", asin: "155643233X" },
+    { name: "The Polyvagal Theory in Therapy", asin: "0393712370" },
+    { name: "Accessing the Healing Power of the Vagus Nerve", asin: "1623170249" },
+    { name: "Nature Made B-Complex", asin: "B004U3Y9FU" },
+    { name: "Acupressure Mat and Pillow Set", asin: "B01LP0V1GI" },
+    { name: "Muse 2 Brain Sensing Headband", asin: "B07BGZQXNF" },
+    { name: "Apollo Neuro Wearable", asin: "B09BFHH1QM" },
+    { name: "The Untethered Soul", asin: "1572245379" },
+    { name: "The Power of Now", asin: "1577314808" },
+    { name: "Theragun Mini", asin: "B07VFXL7YR" },
+    { name: "Magnesium Glycinate", asin: "B00HD0ELFK" },
+    { name: "Weighted Blanket", asin: "B09CC6QFKV" },
+    { name: "Insight Timer Premium", asin: "B0BFWLVK5X" },
+  ];
+  const TEMPLATES = [
+    `Something that pairs well with this kind of work is <a href="https://www.amazon.com/dp/{asin}?tag=${AFFILIATE_TAG}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).`,
+    `A tool that often helps here is <a href="https://www.amazon.com/dp/{asin}?tag=${AFFILIATE_TAG}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).`,
+    `Many readers have found <a href="https://www.amazon.com/dp/{asin}?tag=${AFFILIATE_TAG}" target="_blank" rel="nofollow sponsored">{name}</a> useful for exactly this (paid link).`,
+    `If you want something concrete to work with, <a href="https://www.amazon.com/dp/{asin}?tag=${AFFILIATE_TAG}" target="_blank" rel="nofollow sponsored">{name}</a> is a solid option (paid link).`,
+  ];
+
+  // Ensure all existing Amazon links have the correct tag
+  body = body.replace(
+    /amazon\.com\/dp\/([A-Z0-9]+)(?!\?tag=)/g,
+    `amazon.com/dp/$1?tag=${AFFILIATE_TAG}`
+  );
+
+  const linkCount = (body.match(/amazon\.com\/dp\//g) || []).length;
+  if (linkCount >= 3) return body;
+
+  // Need to inject more links
+  const needed = 4 - linkCount;
+  const shuffled = PRODUCT_POOL.sort(() => Math.random() - 0.5);
+  const paragraphs = body.split("</p>");
+  const total = paragraphs.length;
+  const positions = [0.25, 0.45, 0.65, 0.85].map(f => Math.floor(total * f));
+
+  for (let j = 0; j < needed && j < shuffled.length; j++) {
+    const prod = shuffled[j];
+    const tmpl = TEMPLATES[j % TEMPLATES.length];
+    const sentence = tmpl.replace("{asin}", prod.asin).replace("{name}", prod.name);
+    const insertIdx = positions[linkCount + j] || positions[j];
+    if (insertIdx < total) {
+      paragraphs.splice(insertIdx + j, 0, `<p>${sentence}</p>`);
+    }
+  }
+
+  return paragraphs.join("</p>");
+}
+
+/**
  * 30-day refresh: Expand 1 paragraph + humanization edits
  */
 async function refresh30Day(articleBody, articleTitle, ANTHROPIC_API_KEY) {
@@ -140,6 +198,7 @@ Take this article body and make these specific edits:
 2. Fix any remaining AI-sounding language. NEVER use these words: ${bannedWordsList}
 3. Remove any em-dashes (use " - " or "..." instead).
 4. Make sure the total stays between 1200-1800 words.
+5. IMPORTANT: The article MUST contain exactly 3-4 Amazon affiliate links in the body text. If there are fewer than 3, add more using this format: <a href="https://www.amazon.com/dp/ASIN?tag=spankyspinola-20" target="_blank" rel="nofollow sponsored">Product Name</a> (paid link). Use real ASINs for anxiety/wellness products. If there are already 3-4, keep them. Never remove existing Amazon links.
 
 Title: ${articleTitle}
 
@@ -163,6 +222,9 @@ Return ONLY the revised body HTML. No explanation. No wrapper. Just the HTML.`,
   // Post-process
   revised = removeEmDashes(revised);
   revised = replaceAIWords(revised);
+
+  // Enforce Amazon links
+  revised = enforceAmazonLinks(revised);
 
   const wc = countWords(revised);
   if (wc < 1200 || wc > 1800) {
@@ -200,6 +262,7 @@ Take this article body and make these specific edits:
 3. NEVER use these words: ${bannedWordsList}
 4. Remove any em-dashes (use " - " or "..." instead).
 5. Keep total between 1200-1800 words.
+6. IMPORTANT: The article MUST contain exactly 3-4 Amazon affiliate links in the body text. If there are fewer than 3, add more using this format: <a href="https://www.amazon.com/dp/ASIN?tag=spankyspinola-20" target="_blank" rel="nofollow sponsored">Product Name</a> (paid link). Use real ASINs for anxiety/wellness products. If there are already 3-4, keep them. Never remove existing Amazon links.
 
 Title: ${articleTitle}
 
@@ -222,6 +285,9 @@ Return ONLY the revised body HTML. No explanation.`,
 
   revised = removeEmDashes(revised);
   revised = replaceAIWords(revised);
+
+  // Enforce Amazon links
+  revised = enforceAmazonLinks(revised);
 
   const wc = countWords(revised);
   if (wc < 1200 || wc > 1800) {

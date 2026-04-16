@@ -275,6 +275,15 @@ CRITICAL HUMANIZATION RULES:
 - Write like a real human. Use contractions. Be direct. Be warm. Be honest.
 - No corporate speak. No self-help cliches. No "journey of self-discovery" energy.
 
+AMAZON AFFILIATE LINKS (MANDATORY):
+- Include exactly 4 Amazon product recommendation links naturally embedded in the article body text.
+- Each link must be a real, relevant product (book, supplement, tool, etc.) that genuinely relates to the article topic.
+- Use this exact format: <a href="https://www.amazon.com/dp/ASIN?tag=spankyspinola-20" target="_blank" rel="nofollow sponsored">Product Name</a> (paid link)
+- Spread the 4 links evenly through the article - roughly at 25%, 45%, 65%, and 85% through the body.
+- Each recommendation should be a soft, conversational sentence like: "Something that pairs well with this kind of work is [LINK]."
+- Use REAL ASINs for well-known products in the anxiety/wellness/mindfulness niche. Examples: 0143127748 (The Body Keeps the Score), 155643233X (Waking the Tiger), 0393712370 (Polyvagal Theory in Therapy), 1623170249 (Accessing the Healing Power of the Vagus Nerve), B004U3Y9FU (Nature Made B-Complex), B01LP0V1GI (Acupressure Mat), B07BGZQXNF (Muse 2 Headband), B09BFHH1QM (Apollo Neuro), B0BFWLVK5X (Insight Timer Gift Card), 1572245379 (The Untethered Soul), 1577314808 (The Power of Now), B07VFXL7YR (Theragun Mini), B00HD0ELFK (Magnesium Glycinate), B09CC6QFKV (Weighted Blanket).
+- Pick products that are genuinely relevant to the specific article topic.
+
 Requirements:
 - Varied opener (scene-setting, provocation, first-person, question, named-reference, or gut-punch)
 - 4-6 H2 sections with id attributes for anchor links
@@ -337,6 +346,64 @@ Output ONLY valid JSON with these exact keys:
         }
       }
     }
+
+    // ─── Step 1.6: Verify and enforce Amazon links ───
+    const amazonLinkCount = (article.body.match(/amazon\.com\/dp\//g) || []).length;
+    console.log(`[auto-gen] Amazon links in body: ${amazonLinkCount}`);
+    
+    // If Claude didn't include enough Amazon links, inject them
+    if (amazonLinkCount < 3) {
+      console.log("[auto-gen] Injecting additional Amazon links...");
+      const AFFILIATE_TAG = "spankyspinola-20";
+      const PRODUCT_POOL = [
+        { name: "The Body Keeps the Score", asin: "0143127748" },
+        { name: "Waking the Tiger", asin: "155643233X" },
+        { name: "The Polyvagal Theory in Therapy", asin: "0393712370" },
+        { name: "Accessing the Healing Power of the Vagus Nerve", asin: "1623170249" },
+        { name: "Nature Made B-Complex", asin: "B004U3Y9FU" },
+        { name: "Acupressure Mat and Pillow Set", asin: "B01LP0V1GI" },
+        { name: "Muse 2 Brain Sensing Headband", asin: "B07BGZQXNF" },
+        { name: "Apollo Neuro Wearable", asin: "B09BFHH1QM" },
+        { name: "The Untethered Soul", asin: "1572245379" },
+        { name: "The Power of Now", asin: "1577314808" },
+        { name: "Theragun Mini", asin: "B07VFXL7YR" },
+        { name: "Magnesium Glycinate", asin: "B00HD0ELFK" },
+        { name: "Weighted Blanket", asin: "B09CC6QFKV" },
+        { name: "Insight Timer Premium", asin: "B0BFWLVK5X" },
+      ];
+      const LINK_TEMPLATES = [
+        'Something that pairs well with this kind of work is <a href="https://www.amazon.com/dp/{asin}?tag={tag}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).',
+        'A tool that often helps here is <a href="https://www.amazon.com/dp/{asin}?tag={tag}" target="_blank" rel="nofollow sponsored">{name}</a> (paid link).',
+        'Many readers have found <a href="https://www.amazon.com/dp/{asin}?tag={tag}" target="_blank" rel="nofollow sponsored">{name}</a> useful for exactly this (paid link).',
+        'If you want something concrete to work with, <a href="https://www.amazon.com/dp/{asin}?tag={tag}" target="_blank" rel="nofollow sponsored">{name}</a> is a solid option (paid link).',
+      ];
+      
+      const needed = 4 - amazonLinkCount;
+      const shuffled = PRODUCT_POOL.sort(() => Math.random() - 0.5);
+      const paragraphs = article.body.split("</p>");
+      const total = paragraphs.length;
+      const positions = [0.25, 0.45, 0.65, 0.85].map(f => Math.floor(total * f));
+      
+      let inserted = 0;
+      for (let j = 0; j < needed && j < shuffled.length; j++) {
+        const prod = shuffled[j];
+        const tmpl = LINK_TEMPLATES[j % LINK_TEMPLATES.length];
+        const sentence = tmpl.replace("{asin}", prod.asin).replace("{tag}", AFFILIATE_TAG).replace("{name}", prod.name);
+        const insertIdx = positions[amazonLinkCount + j] || positions[j];
+        if (insertIdx < total) {
+          paragraphs.splice(insertIdx, 0, `<p>${sentence}</p>`);
+          inserted++;
+        }
+      }
+      article.body = paragraphs.join("</p>");
+      console.log(`[auto-gen] Injected ${inserted} additional Amazon links`);
+    }
+    
+    // Ensure all Amazon links have the correct tag
+    article.body = article.body.replace(
+      /amazon\.com\/dp\/([A-Z0-9]+)(?!\?tag=)/g,
+      'amazon.com/dp/$1?tag=spankyspinola-20'
+    );
 
     // Verify word count
     const wordCount = countWords(article.body);
