@@ -173,6 +173,17 @@ async function startServer() {
     });
   });
 
+  // Health endpoint — must return 200 fast, no DB check
+  app.get('/health', (_req, res) => {
+    res.status(200).json({
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime(),
+      env: process.env.NODE_ENV,
+      node: process.version
+    });
+  });
+
   // Known client-side routes — serve index.html with 200
   const clientRoutes = [
     "/", "/articles", "/about", "/start-here", "/calm-now",
@@ -198,10 +209,10 @@ async function startServer() {
     }
   });
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 10000;
 
-  server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+  server.listen(Number(port), '0.0.0.0', () => {
+    console.log(`Server running on http://0.0.0.0:${port}/`);
   });
 }
 

@@ -1,0 +1,14 @@
+:root {
+  --bg-primary: #FAFAF5;
+  --text-primary: #1E2228;
+  --body-font-size-desktop: 18px;
+  --body-font-size-mobile: 16px;
+  --line-height-body: 1.75;
+  --max-content-width: 720px;
+  --tap-target-min: 44px;
+}
+body { background: var(--bg-primary); color: var(--text-primary); font-size: var(--body-font-size-desktop); line-height: 1.75; }
+@media (max-width: 768px) { body { font-size: var(--body-font-size-mobile); } }
+article p, article li { max-width: 72ch; }
+button, a.button, .cta { min-height: 44px; min-width: 44px; }
+img { max-width: 100%; height: auto; display: block; }
