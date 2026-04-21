@@ -16,6 +16,7 @@ import CalmNow from "./pages/CalmNow";
 import QuizPage from "./pages/QuizPage";
 import Tools from "./pages/Tools";
 import Assessments from "./pages/Assessments";
+import AssessmentPage from "./pages/AssessmentPage";
 
 function Router() {
   return (
@@ -33,6 +34,7 @@ function Router() {
       <Route path="/quizzes" component={Assessments} />
       <Route path="/tools" component={Tools} />
       <Route path="/assessments" component={Assessments} />
+      <Route path="/assessments/:id" component={AssessmentPage} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

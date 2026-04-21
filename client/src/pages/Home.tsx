@@ -5,6 +5,7 @@ import { SITE_CONFIG, CATEGORIES } from "@/lib/types";
 import { filterPublished, sortByDate } from "@/lib/utils";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import { PracticeHighlights } from "@/components/CalmingPractices";
 
 const HERO_IMAGE = "https://quiet-storm.b-cdn.net/images/hero-home.webp";
 
@@ -263,6 +264,49 @@ export default function Home() {
               </div>
             </FadeUp>
           ))}
+        </div>
+      </section>
+
+      {/* Calming Practices */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <FadeUp>
+          <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-3 text-center">
+            Things You Can Do Right Now
+          </h2>
+          <p className="text-muted-foreground text-center mb-10 max-w-xl mx-auto">
+            You don't need a therapist's appointment or a meditation retreat. These are things you can do in your living room, at your desk, or in a parking lot before you walk into work.
+          </p>
+          <PracticeHighlights />
+          <div className="text-center mt-8">
+            <Link
+              href="/start-here"
+              className="no-underline text-sm font-semibold transition-colors"
+              style={{ color: "oklch(0.55 0.12 145)" }}
+            >
+              See all 25+ practices &rarr;
+            </Link>
+          </div>
+        </FadeUp>
+      </section>
+
+      {/* Assessments CTA */}
+      <section className="section-sage py-16 sm:py-20">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeUp>
+            <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-4">
+              Where are you right now?
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+              Take one of our gentle self-assessments. Not a diagnosis. Just a mirror to help you see your patterns more clearly.
+            </p>
+            <Link
+              href="/assessments"
+              className="inline-block no-underline px-8 py-4 rounded-lg text-base font-semibold transition-all duration-200 border-2"
+              style={{ color: "oklch(0.45 0.1 145)", borderColor: "oklch(0.62 0.12 145)" }}
+            >
+              Take a Self-Assessment
+            </Link>
+          </FadeUp>
         </div>
       </section>
 

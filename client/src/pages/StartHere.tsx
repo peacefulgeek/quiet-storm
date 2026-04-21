@@ -4,6 +4,7 @@ import { CATEGORIES, SITE_CONFIG } from "@/lib/types";
 import { filterPublished, sortByDate } from "@/lib/utils";
 import SEO from "@/components/SEO";
 import Layout from "@/components/Layout";
+import { FullPracticesSection } from "@/components/CalmingPractices";
 import { useMemo } from "react";
 
 export default function StartHere() {
@@ -110,6 +111,34 @@ export default function StartHere() {
               </Link>
             ))}
           </div>
+        </div>
+
+        {/* Calming Practices */}
+        <div className="mt-16">
+          <h3 className="font-heading text-2xl sm:text-3xl font-semibold text-foreground mb-3">
+            25+ Things You Can Do Right Now
+          </h3>
+          <p className="text-muted-foreground leading-relaxed mb-8">
+            You don't need a prescription or a therapist's office for these. Meditation, chanting, the butterfly hug, hands on heart, loving-kindness practice, cold water resets, humming, gentle rocking, physiological sighs. These are things real people use every day to find deep peace in the middle of struggling with anxiety. Pick one. Try it right now.
+          </p>
+          <FullPracticesSection />
+        </div>
+
+        {/* Assessments CTA */}
+        <div className="mt-16 p-6 sm:p-8 rounded-2xl section-sage text-center">
+          <h3 className="font-heading text-xl font-semibold text-foreground mb-3">
+            Not sure where to start?
+          </h3>
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            Take one of our gentle self-assessments. They'll help you understand your anxiety patterns and point you toward the practices and articles that are most likely to help.
+          </p>
+          <Link
+            href="/assessments"
+            className="inline-block no-underline px-6 py-3 rounded-lg text-sm font-semibold text-white transition-all hover:shadow-lg"
+            style={{ background: "linear-gradient(135deg, oklch(0.62 0.12 145), oklch(0.55 0.1 145))" }}
+          >
+            Take a Self-Assessment
+          </Link>
         </div>
 
         {/* Calm Now CTA */}

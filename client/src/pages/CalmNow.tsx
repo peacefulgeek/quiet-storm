@@ -222,6 +222,36 @@ export default function CalmNow() {
               </Link>
             </div>
 
+            {/* More practices */}
+            <div className="mt-12 text-left p-6 rounded-2xl section-sage">
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: "oklch(0.62 0.12 145)" }}>
+                More things that help
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { name: "Butterfly Hug", desc: "Cross arms over chest, alternate tapping shoulders" },
+                  { name: "Hands on Heart", desc: "Place both palms on your chest, breathe slowly" },
+                  { name: "Humming", desc: "Hum on the exhale to vibrate your vagus nerve" },
+                  { name: "Cold Water Reset", desc: "Splash cold water on your face" },
+                  { name: "Gentle Rocking", desc: "Rock side to side, the oldest calming technique" },
+                  { name: "Self-Holding", desc: "Wrap your arms around yourself and squeeze" },
+                  { name: "Chanting", desc: "A simple 'Om' or 'Voo' on the exhale" },
+                  { name: "Physiological Sigh", desc: "Double inhale, long exhale" },
+                ].map((p) => (
+                  <div key={p.name} className="flex items-start gap-3 p-3 rounded-lg bg-card">
+                    <div className="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style={{ background: "oklch(0.62 0.12 145)" }} />
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">{p.name}</p>
+                      <p className="text-xs text-muted-foreground">{p.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 italic">
+                Find all 25+ practices on our <Link href="/start-here" className="underline" style={{ color: "oklch(0.55 0.12 145)" }}>Start Here</Link> page.
+              </p>
+            </div>
+
             {/* Article links */}
             <div className="mt-16 text-left">
               <p className="text-sm font-semibold uppercase tracking-[0.15em] mb-4" style={{ color: "oklch(0.62 0.12 145)" }}>
