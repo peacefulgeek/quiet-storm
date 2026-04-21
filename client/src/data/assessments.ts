@@ -28,12 +28,33 @@ export interface Assessment {
   results: ResultTier[];
 }
 
-const IMAGES = {
-  forest: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-gentle-dawn-jEQKTtaQ5Ad4BUjnDbxnjU.webp",
-  lake: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-calm-waters-HgNztQ6grNwsLZT5rNgmGY.webp",
-  meadow: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-mountain-peace-9iH6BZndydViEq8vomysbi.webp",
-  garden: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-garden-sanctuary-WiNvXio6JZRvCPAaBcyDkS.webp",
-  ocean: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-ocean-horizon-QyZXceZGr5wYNUXPyEHves.webp",
+// 20 unique tier images — each assessment × 4 tiers
+const IMG = {
+  // Anxiety Intensity
+  anxiety1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-gentle-dawn-jEQKTtaQ5Ad4BUjnDbxnjU.webp",
+  anxiety2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-calm-waters-HgNztQ6grNwsLZT5rNgmGY.webp",
+  anxiety3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-mountain-peace-9iH6BZndydViEq8vomysbi.webp",
+  anxiety4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-garden-sanctuary-WiNvXio6JZRvCPAaBcyDkS.webp",
+  // Nervous System
+  nervous1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-ocean-horizon-QyZXceZGr5wYNUXPyEHves.webp",
+  nervous2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-nervous-tier2-ApZYxcFWhmAu5wFRh8cPiG.webp",
+  nervous3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-nervous-tier3-gWqsXGDkZUBPYFyCurpzVt.webp",
+  nervous4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-nervous-tier4-WYEFnxkPafWEqDTnbebPiE.webp",
+  // Sleep & Anxiety
+  sleep1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-sleep-tier1-LzfdLT6bMWqq94RKJn22pK.webp",
+  sleep2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-sleep-tier2-MHJ3WLkr3fYPP7zVqACdTC.webp",
+  sleep3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-sleep-tier3-E6DGnibBRz4GJnt3tqgtQv.webp",
+  sleep4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-sleep-tier4-QFRLekGNLcJTLeCprpEQ92.webp",
+  // Body Awareness
+  body1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-body-tier1-KxQ3Tjqmm8Ntcp3YTKnakd.webp",
+  body2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-body-tier2-VWZ6RBXB6WtNB2U4suSdxx.webp",
+  body3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-body-tier3-FtfyGhn2M3TNm6sNAgS4rf.webp",
+  body4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-body-tier4-9Svv3TTdnbYBhuqP3LWuMZ.webp",
+  // Self-Compassion
+  compassion1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-compassion-tier1-AKQYNitj2jSoCaFgR5Vj5i.webp",
+  compassion2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-compassion-tier2-LpnuJgheENVidGLV3VBAdo.webp",
+  compassion3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-compassion-tier3-DzvkdieaugZRdvK4Xz2G63.webp",
+  compassion4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663309220512/5L92HNX2jQriZGmWknDJPd/assess-compassion-tier4-gceXFAQe78KffzfbJLpkmY.webp",
 };
 
 export const ASSESSMENTS: Assessment[] = [
@@ -140,7 +161,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [0, 7],
         title: "Gentle Waves",
-        image: IMAGES.lake,
+        image: IMG.anxiety1,
         message: "Your anxiety seems to be at a manageable level right now. That doesn't mean it's not real or that it doesn't matter. It means you have a good foundation to build on. This is a wonderful time to develop practices that can keep you steady when the waters get rougher.",
         practices: [
           "Daily 5-minute meditation to build your baseline calm",
@@ -153,7 +174,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [8, 15],
         title: "Rising Tides",
-        image: IMAGES.forest,
+        image: IMG.anxiety2,
         message: "You're carrying more than a little weight right now, and that takes real courage to acknowledge. Your anxiety is present and it's asking for your attention. The good news is that you're here, you're aware, and awareness is always the first step toward something different.",
         practices: [
           "Butterfly hug technique when anxiety spikes (cross arms, tap alternately)",
@@ -167,7 +188,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [16, 23],
         title: "Weathering the Storm",
-        image: IMAGES.garden,
+        image: IMG.anxiety3,
         message: "This is hard. Really hard. And the fact that you're still showing up, still looking for answers, still trying to understand what's happening in your body and mind says something important about you. Your anxiety is significant right now, and you deserve support that matches what you're going through.",
         practices: [
           "Legs-up-the-wall pose for 10 minutes to activate your parasympathetic nervous system",
@@ -182,7 +203,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [24, 30],
         title: "In the Deep",
-        image: IMAGES.ocean,
+        image: IMG.anxiety4,
         message: "We want you to know something: what you're experiencing is real, it's valid, and it doesn't have to stay this way. When anxiety reaches this level, it can feel like there's no way out. But there is. You found this page, which means some part of you still believes that things can change. Trust that part. Please consider reaching out to a mental health professional. You don't have to do this alone.",
         practices: [
           "Place both hands on your heart and breathe slowly. Feel the warmth of your own hands.",
@@ -300,7 +321,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [0, 7],
         title: "Ventral Vagal: Safe & Connected",
-        image: IMAGES.meadow,
+        image: IMG.nervous1,
         message: "Your nervous system is in its most regulated state right now. You're in what polyvagal theory calls the ventral vagal state, where connection, curiosity, and calm are accessible. This is a great time to build resilience practices that will serve you when things get harder.",
         practices: [
           "Meditation to deepen your baseline calm",
@@ -313,7 +334,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [8, 15],
         title: "Sympathetic Activation: Fight or Flight",
-        image: IMAGES.forest,
+        image: IMG.nervous2,
         message: "Your nervous system has shifted into a mobilized state. Your body is preparing to fight or flee, even if there's no actual threat. This is your body doing its job, just a little too enthusiastically. The key right now is to send signals of safety back to your body.",
         practices: [
           "Extended exhale breathing (inhale 4, exhale 6-8) to activate your vagus nerve",
@@ -327,7 +348,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [16, 23],
         title: "Mixed State: Freeze with Agitation",
-        image: IMAGES.garden,
+        image: IMG.nervous3,
         message: "You're in a mixed state where your body is both activated and shutting down at the same time. This can feel like being wired and tired, anxious but unable to move. It's one of the most uncomfortable places to be, and it makes sense that you're struggling. Gentle, titrated movement can help.",
         practices: [
           "Legs-up-the-wall for 10 minutes with hands on your belly",
@@ -342,7 +363,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [24, 30],
         title: "Dorsal Vagal: Shutdown",
-        image: IMAGES.ocean,
+        image: IMG.nervous4,
         message: "Your nervous system has gone into its deepest protective state. You may feel numb, disconnected, or like you're watching life from behind glass. This is not weakness. This is your body's ancient wisdom protecting you from overwhelm. Coming back happens slowly, gently, one small sensation at a time.",
         practices: [
           "Wrap yourself in a heavy blanket and feel its weight",
@@ -460,7 +481,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [0, 7],
         title: "Restful Nights",
-        image: IMAGES.lake,
+        image: IMG.sleep1,
         message: "Your sleep seems to be in a good place. Anxiety isn't significantly disrupting your rest, which is a real gift. Protecting this is worth your attention, because good sleep is one of the strongest buffers against anxiety.",
         practices: [
           "Keep a consistent sleep schedule, even on weekends",
@@ -473,7 +494,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [8, 15],
         title: "Restless Nights",
-        image: IMAGES.forest,
+        image: IMG.sleep2,
         message: "Anxiety is starting to creep into your sleep. You might not be in crisis, but the pattern is worth paying attention to. Small changes to your evening routine can make a real difference before this becomes a bigger problem.",
         practices: [
           "Yoga nidra (guided sleep meditation) as you fall asleep",
@@ -487,7 +508,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [16, 23],
         title: "Troubled Sleep",
-        image: IMAGES.garden,
+        image: IMG.sleep3,
         message: "Sleep has become a real struggle, and the anxiety-sleep cycle is feeding itself. You're probably exhausted, which makes everything harder. Breaking this cycle is possible, but it takes patience and the right tools. You're not failing at sleep. Your nervous system just needs help finding the off switch.",
         practices: [
           "Legs-up-the-wall for 15 minutes before bed",
@@ -502,7 +523,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [24, 30],
         title: "Sleep in Crisis",
-        image: IMAGES.ocean,
+        image: IMG.sleep4,
         message: "Your sleep is severely disrupted, and that level of sleep deprivation makes everything feel more intense and more hopeless. Please know that this is treatable. You are not broken. Your nervous system is stuck in a protective mode that makes rest feel unsafe. Professional support can help you find your way back to sleep.",
         practices: [
           "Place both hands on your heart. Breathe. You are safe right now.",
@@ -620,7 +641,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [0, 7],
         title: "Embodied & Aware",
-        image: IMAGES.meadow,
+        image: IMG.body1,
         message: "You have a strong connection to your body. You can feel what's happening inside, you know how to respond, and you have practices that keep you grounded. This body awareness is one of the most powerful tools for managing anxiety. Keep nurturing it.",
         practices: [
           "Deepen your meditation practice with longer sits",
@@ -633,7 +654,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [8, 15],
         title: "Growing Awareness",
-        image: IMAGES.forest,
+        image: IMG.body2,
         message: "You're developing body awareness, and that's something to feel good about. There are places where the connection is strong and places where it could use some attention. The practices below can help you build a deeper, more consistent relationship with your body.",
         practices: [
           "Daily body scan meditation (even 5 minutes counts)",
@@ -647,7 +668,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [16, 23],
         title: "Disconnected",
-        image: IMAGES.garden,
+        image: IMG.body3,
         message: "Your body and mind have become somewhat separated, which is actually a very common response to chronic stress or anxiety. Your body learned to protect you by turning down the volume on sensation. The path back is gentle, gradual, and worth every step.",
         practices: [
           "Start with just 2 minutes of body awareness per day",
@@ -662,7 +683,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [24, 30],
         title: "Body Shutdown",
-        image: IMAGES.ocean,
+        image: IMG.body4,
         message: "You've become quite disconnected from your body, and that disconnection is itself a form of protection. Your system learned that feeling was too much, so it turned the volume way down. Coming back to your body is possible, but it needs to happen slowly, safely, and ideally with professional support.",
         practices: [
           "Wrap yourself in a blanket and just feel its weight. That's enough for now.",
@@ -780,7 +801,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [0, 7],
         title: "Compassionate Heart",
-        image: IMAGES.lake,
+        image: IMG.compassion1,
         message: "You've cultivated a genuinely compassionate relationship with yourself. This is rare and beautiful, and it's one of the strongest protections against anxiety spiraling out of control. Your inner voice is an ally, not an enemy.",
         practices: [
           "Deepen your loving-kindness meditation practice",
@@ -793,7 +814,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [8, 15],
         title: "Learning Kindness",
-        image: IMAGES.meadow,
+        image: IMG.compassion2,
         message: "You're on the path toward self-compassion, and that matters more than you might think. You can be kind to yourself sometimes, but the inner critic still has a loud voice. The practices below can help you turn down that volume and turn up the warmth.",
         practices: [
           "Hands-on-heart breathing while saying 'I am enough'",
@@ -807,7 +828,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [16, 23],
         title: "The Inner Critic Runs the Show",
-        image: IMAGES.garden,
+        image: IMG.compassion3,
         message: "Your inner critic has become very powerful, and it's making your anxiety worse. Here's what's important to understand: that critical voice developed to protect you. It thought that if it was hard enough on you, it could keep you safe. But it's not working anymore. Learning to soften that voice is some of the most important work you can do.",
         practices: [
           "Name your inner critic. Give it a character. This creates distance.",
@@ -822,7 +843,7 @@ export const ASSESSMENTS: Assessment[] = [
       {
         range: [24, 30],
         title: "At War with Yourself",
-        image: IMAGES.ocean,
+        image: IMG.compassion4,
         message: "You're carrying a tremendous amount of self-criticism, and it's exhausting. The voice inside your head has become an adversary, and that makes everything, especially anxiety, so much harder to bear. We want you to hear this clearly: you are not the things your inner critic says. You are the one who showed up here, looking for something better. That takes courage.",
         practices: [
           "Just place your hands on your heart. Feel the warmth. That's you, caring for you.",

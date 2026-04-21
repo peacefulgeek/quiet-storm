@@ -37,6 +37,7 @@ function Header({ currentPath }: { currentPath: string }) {
   const navLinks = [
     { href: "/start-here", label: "Start Here" },
     { href: "/articles", label: "Articles" },
+    { href: "/assessments", label: "Assessments" },
     { href: "/calm-now", label: "Calm Now" },
     { href: "/about", label: "About" },
     { href: "/tools", label: "Tools" },
@@ -44,6 +45,7 @@ function Header({ currentPath }: { currentPath: string }) {
 
   const isActive = (href: string) => {
     if (href === "/articles") return currentPath.startsWith("/articles") || currentPath.startsWith("/article/");
+    if (href === "/assessments") return currentPath.startsWith("/assessments") || currentPath.startsWith("/assessment/");
     return currentPath === href;
   };
 

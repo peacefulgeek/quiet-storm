@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, Link } from "wouter";
 import { ASSESSMENTS, type Assessment, type ResultTier } from "@/data/assessments";
 import Layout from "@/components/Layout";
@@ -8,6 +8,48 @@ import { Activity, Heart, Moon, Scan, HeartHandshake, ChevronRight, RotateCcw, A
 const ICONS: Record<string, React.FC<{ className?: string; style?: React.CSSProperties }>> = {
   Activity, Heart, Moon, Scan, HeartHandshake,
 };
+
+const STORAGE_KEY = "qs-assessment-progress";
+
+interface SavedProgress {
+  assessmentId: string;
+  currentQ: number;
+  scores: number[];
+  timestamp: number;
+}
+
+function loadProgress(assessmentId: string): SavedProgress | null {
+  try {
+    const raw = localStorage.getItem(`${STORAGE_KEY}-${assessmentId}`);
+    if (!raw) return null;
+    const data: SavedProgress = JSON.parse(raw);
+    // Expire after 24 hours
+    if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
+      localStorage.removeItem(`${STORAGE_KEY}-${assessmentId}`);
+      return null;
+    }
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function saveProgress(assessmentId: string, currentQ: number, scores: number[]) {
+  try {
+    const data: SavedProgress = { assessmentId, currentQ, scores, timestamp: Date.now() };
+    localStorage.setItem(`${STORAGE_KEY}-${assessmentId}`, JSON.stringify(data));
+  } catch {
+    // localStorage full or unavailable - silently fail
+  }
+}
+
+function clearProgress(assessmentId: string) {
+  try {
+    localStorage.removeItem(`${STORAGE_KEY}-${assessmentId}`);
+  } catch {
+    // silently fail
+  }
+}
 
 function ProgressBar({ current, total }: { current: number; total: number }) {
   const pct = ((current + 1) / total) * 100;
@@ -112,6 +154,35 @@ function ResultScreen({ result, assessment, onRetake }: { result: ResultTier; as
   );
 }
 
+function ResumePrompt({ savedQ, total, onResume, onRestart }: { savedQ: number; total: number; onResume: () => void; onRestart: () => void }) {
+  return (
+    <div className="p-6 rounded-xl border-2 space-y-4" style={{ borderColor: "oklch(0.62 0.12 145 / 0.3)", background: "linear-gradient(135deg, oklch(0.96 0.03 145 / 0.3), oklch(0.98 0.005 90))" }}>
+      <div>
+        <h3 className="font-heading text-lg font-semibold text-foreground mb-1">Welcome Back</h3>
+        <p className="text-muted-foreground text-sm">
+          You were on question {savedQ + 1} of {total}. Would you like to pick up where you left off?
+        </p>
+      </div>
+      <div className="flex gap-3">
+        <button
+          onClick={onResume}
+          className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:shadow-md"
+          style={{ background: "linear-gradient(135deg, oklch(0.62 0.12 145), oklch(0.55 0.1 145))" }}
+        >
+          Continue
+        </button>
+        <button
+          onClick={onRestart}
+          className="px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all hover:shadow-sm text-foreground"
+          style={{ borderColor: "oklch(0.85 0.03 60 / 0.6)" }}
+        >
+          Start Over
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function AssessmentPage() {
   const { id } = useParams<{ id: string }>();
   const assessment = ASSESSMENTS.find((a) => a.id === id);
@@ -119,13 +190,32 @@ export default function AssessmentPage() {
   const [scores, setScores] = useState<number[]>([]);
   const [result, setResult] = useState<ResultTier | null>(null);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [showResume, setShowResume] = useState(false);
+  const [savedProgress, setSavedProgress] = useState<SavedProgress | null>(null);
   const questionRef = useRef<HTMLDivElement>(null);
 
+  // Load saved progress on mount or assessment change
   useEffect(() => {
-    setCurrentQ(0);
-    setScores([]);
-    setResult(null);
-    setSelectedOption(null);
+    if (!id) return;
+    const saved = loadProgress(id);
+    if (saved && saved.currentQ > 0) {
+      setSavedProgress(saved);
+      setShowResume(true);
+    } else {
+      setCurrentQ(0);
+      setScores([]);
+      setResult(null);
+      setSelectedOption(null);
+      setShowResume(false);
+      setSavedProgress(null);
+    }
+  }, [id]);
+
+  // Save progress whenever question changes
+  const persistProgress = useCallback((q: number, s: number[]) => {
+    if (id && q > 0) {
+      saveProgress(id, q, s);
+    }
   }, [id]);
 
   if (!assessment) {
@@ -143,32 +233,51 @@ export default function AssessmentPage() {
 
   const Icon = ICONS[assessment.icon] || Activity;
 
+  function handleResume() {
+    if (savedProgress) {
+      setCurrentQ(savedProgress.currentQ);
+      setScores(savedProgress.scores);
+    }
+    setShowResume(false);
+    setSavedProgress(null);
+  }
+
+  function handleRestart() {
+    setCurrentQ(0);
+    setScores([]);
+    setResult(null);
+    setSelectedOption(null);
+    setShowResume(false);
+    setSavedProgress(null);
+    if (id) clearProgress(id);
+  }
+
   function handleAnswer(score: number, optionIndex: number) {
     setSelectedOption(optionIndex);
     setTimeout(() => {
       const newScores = [...scores, score];
+      const nextQ = currentQ + 1;
       setScores(newScores);
       setSelectedOption(null);
 
-      if (currentQ + 1 >= assessment!.questions.length) {
+      if (nextQ >= assessment!.questions.length) {
         const total = newScores.reduce((a, b) => a + b, 0);
         const tier = assessment!.results.find(
           (r) => total >= r.range[0] && total <= r.range[1]
         ) || assessment!.results[assessment!.results.length - 1];
         setResult(tier);
+        if (id) clearProgress(id);
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        setCurrentQ((q) => q + 1);
+        setCurrentQ(nextQ);
+        persistProgress(nextQ, newScores);
         questionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
       }
     }, 400);
   }
 
   function handleRetake() {
-    setCurrentQ(0);
-    setScores([]);
-    setResult(null);
-    setSelectedOption(null);
+    handleRestart();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -197,7 +306,14 @@ export default function AssessmentPage() {
       </section>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-        {result ? (
+        {showResume ? (
+          <ResumePrompt
+            savedQ={savedProgress?.currentQ || 0}
+            total={assessment.questions.length}
+            onResume={handleResume}
+            onRestart={handleRestart}
+          />
+        ) : result ? (
           <ResultScreen result={result} assessment={assessment} onRetake={handleRetake} />
         ) : (
           <div ref={questionRef} className="space-y-8">
