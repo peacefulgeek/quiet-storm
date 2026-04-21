@@ -12,12 +12,18 @@ async function deepRefreshFromAnthropic(article) {
       role: 'user',
       content: `Do a deep refresh of this article. Rewrite sections that feel stale, update statistics and references, improve flow. Keep the same voice (Kalesh - conversational, warm, first-person) and all Amazon links intact. Keep between 1200-1800 words.
 
-HARD RULES:
-- Never use these words: delve, tapestry, paradigm, synergy, leverage, unlock, empower, utilize, pivotal, embark, underscore, paramount, seamlessly, robust, beacon, foster, elevate, curate, bespoke, resonate, harness, intricate, plethora, myriad, comprehensive, transformative, groundbreaking, innovative, cutting-edge, revolutionary, profound, holistic, nuanced, multifaceted, furthermore, moreover, additionally, consequently, subsequently
-- Never use em-dashes
-- Use contractions naturally (you're, don't, it's, can't, won't, I'm, I've)
-- Include at least 2 conversational interjections (e.g., "Look,", "Here's the thing", "Honestly,", "Truth is,")
-- Vary sentence length. Mix short punchy sentences with longer flowing ones.
+HARD RULES for this article:
+- 1,600 to 2,000 words (strict; under 1,200 or over 2,500 = regenerate)
+- Zero em-dashes. Use commas, periods, colons, or parentheses.
+- Never use these words: delve, tapestry, paradigm, synergy, leverage, unlock, empower, utilize, pivotal, embark, underscore, paramount, seamlessly, robust, beacon, foster, elevate, curate, curated, bespoke, resonate, harness, intricate, plethora, myriad, comprehensive, transformative, groundbreaking, innovative, cutting-edge, revolutionary, state-of-the-art, ever-evolving, profound, holistic, nuanced, multifaceted, stakeholders, ecosystem, furthermore, moreover, additionally, consequently, subsequently, thereby, streamline, optimize, facilitate, amplify, catalyze.
+- Never use these phrases: "it's important to note," "in conclusion," "in summary," "in the realm of," "dive deep into," "at the end of the day," "in today's fast-paced world," "plays a crucial role," "a testament to," "when it comes to," "cannot be overstated."
+- Contractions throughout. You're. Don't. It's. That's. I've.
+- Vary sentence length aggressively. Some fragments. Some long. Some three-word sentences.
+- Direct address ("you") throughout OR first-person ("I / my") throughout. Pick one.
+- Include at least 2 conversational openers: "Here's the thing," "Honestly," "Look," "Truth is," "But here's what's interesting," "That said."
+- Concrete specifics over abstractions. A name. A number. A moment.
+- 3 to 4 Amazon product links embedded naturally in prose, each followed by "(paid link)" in plain text. Use only ASINs from the provided catalog.
+- No em-dashes. No em-dashes. No em-dashes.
 - Keep all existing <a href="amazon.com..."> links exactly as they are
 
 Article title: ${article.title}

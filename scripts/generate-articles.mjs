@@ -265,14 +265,17 @@ async function generateArticle() {
 
 Voice: Kalesh - consciousness teacher and writer. Direct, unflinching, compassionate. Uses somatic and Vedantic frameworks. No toxic positivity. No listicle energy. 30% spiritual/healing threads woven throughout. Conversational and truly connective - like talking to a wise friend who's been through it.
 
-CRITICAL HUMANIZATION RULES:
-- Word count MUST be between 1200 and 1800 words. Aim for 1400-1700.
-- ZERO em-dashes. Never use the character. Use " - " or "..." or " ~ " instead.
-- ZERO AI-flagged words. NEVER use any of these: ${bannedWordsList}
-- Include exactly 2 conversational interjections as standalone paragraphs (e.g., "Stay with me here.", "I know, I know.", "Wild, right?", "Think about that for a second.", "Here's the thing.")
-- Aggressively vary sentence lengths. Mix short punchy sentences with longer flowing ones.
-- Never start more than 2 sentences with "This" in a row. Vary starters.
-- Write like a real human. Use contractions. Be direct. Be warm. Be honest.
+HARD RULES for this article:
+- 1,600 to 2,000 words (strict; under 1,200 or over 2,500 = regenerate)
+- Zero em-dashes. Use commas, periods, colons, or parentheses.
+- Never use these words: ${bannedWordsList}
+- Never use these phrases: "it's important to note," "in conclusion," "in summary," "in the realm of," "dive deep into," "at the end of the day," "in today's fast-paced world," "plays a crucial role," "a testament to," "when it comes to," "cannot be overstated."
+- Contractions throughout. You're. Don't. It's. That's. I've.
+- Vary sentence length aggressively. Some fragments. Some long. Some three-word sentences.
+- Direct address ("you") throughout OR first-person ("I / my") throughout. Pick one.
+- Include at least 2 conversational openers: "Here's the thing," "Honestly," "Look," "Truth is," "But here's what's interesting," "That said."
+- Concrete specifics over abstractions. A name. A number. A moment.
+- No em-dashes. No em-dashes. No em-dashes.
 - No corporate speak. No self-help cliches. No "journey of self-discovery" energy.
 
 AMAZON AFFILIATE LINKS (MANDATORY):
@@ -408,8 +411,8 @@ Output ONLY valid JSON with these exact keys:
     // Verify word count
     const wordCount = countWords(article.body);
     console.log(`[auto-gen] Word count: ${wordCount}`);
-    if (wordCount < 1200 || wordCount > 1800) {
-      console.warn(`[auto-gen] Word count ${wordCount} outside 1200-1800 range. Proceeding anyway.`);
+    if (wordCount < 1200 || wordCount > 2500) {
+      console.warn(`[auto-gen] Word count ${wordCount} outside range. Proceeding anyway.`);
     }
 
     // ─── Step 2: Generate hero image via FAL.ai ───
