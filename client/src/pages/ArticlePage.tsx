@@ -124,6 +124,21 @@ export default function ArticlePage() {
             <span className="text-sm text-muted-foreground">{article.readingTime} min read</span>
           </div>
 
+          {/* Author Byline */}
+          <div className="flex items-center gap-3 mb-6">
+            <img
+              src="https://quiet-storm.b-cdn.net/images/kalesh-byline.webp"
+              alt={SITE_CONFIG.author}
+              className="w-10 h-10 rounded-full object-cover shrink-0 border-2"
+              style={{ borderColor: "oklch(0.62 0.12 145 / 0.3)" }}
+              loading="lazy"
+            />
+            <div>
+              <p className="text-sm font-semibold text-foreground leading-tight">{SITE_CONFIG.author}</p>
+              <p className="text-xs text-muted-foreground">{SITE_CONFIG.authorTitle}</p>
+            </div>
+          </div>
+
           {/* Title */}
           <h1 className="font-heading text-3xl sm:text-4xl lg:text-[42px] font-semibold leading-tight text-foreground mb-6">
             {article.title}

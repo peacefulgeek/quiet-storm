@@ -144,15 +144,25 @@ export default function About() {
 
         {/* Kalesh Advisor Card */}
         <div className="p-6 sm:p-8 rounded-2xl border-2 transition-colors" style={{ borderColor: "oklch(0.62 0.12 145 / 0.2)", background: "linear-gradient(135deg, oklch(0.94 0.04 145 / 0.5), oklch(0.97 0.005 90))" }}>
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: "oklch(0.62 0.12 145)" }}>
-            {SITE_CONFIG.authorTitle}
-          </p>
-          <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
-            {SITE_CONFIG.author}
-          </h2>
-          <p className="text-foreground leading-relaxed mb-5">
-            {SITE_CONFIG.authorBio}
-          </p>
+          <div className="flex flex-col sm:flex-row gap-6 items-start">
+            <img
+              src="https://quiet-storm.b-cdn.net/images/kalesh-headshot.webp"
+              alt={SITE_CONFIG.author}
+              className="w-28 h-28 rounded-2xl object-cover shrink-0 shadow-md"
+              loading="lazy"
+            />
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] mb-3" style={{ color: "oklch(0.62 0.12 145)" }}>
+                {SITE_CONFIG.authorTitle}
+              </p>
+              <h2 className="font-heading text-2xl font-semibold text-foreground mb-4">
+                {SITE_CONFIG.author}
+              </h2>
+              <p className="text-foreground leading-relaxed mb-5">
+                {SITE_CONFIG.authorBio}
+              </p>
+            </div>
+          </div>
           <a
             href={SITE_CONFIG.authorLink}
             className="inline-block no-underline px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:shadow-lg"
