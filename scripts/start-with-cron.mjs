@@ -2,7 +2,7 @@
  * Start With Cron — Spawns web server + registers node-cron schedules
  * Start Command for Render: NODE_ENV=production node scripts/start-with-cron.mjs
  *
- * All five crons live in the web service process — no Manus, no external
+ * All five crons live in the web service process, no external
  * scheduler, no dispatcher. Gated by AUTO_GEN_ENABLED === 'true'.
  */
 
