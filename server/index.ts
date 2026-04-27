@@ -17,6 +17,16 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
 
+  // 301 redirect www -> non-www (canonical domain)
+  app.use((req, res, next) => {
+    const host = req.hostname || req.headers.host || '';
+    if (host.startsWith('www.')) {
+      const nonWww = host.replace(/^www\./, '');
+      return res.redirect(301, `https://${nonWww}${req.originalUrl}`);
+    }
+    next();
+  });
+
   // AI HTTP headers on all responses
   app.use((_req, res, next) => {
     res.setHeader("X-AI-Content-Author", AUTHOR);
