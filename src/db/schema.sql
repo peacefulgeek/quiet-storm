@@ -1,5 +1,6 @@
 -- Quiet Storm — PostgreSQL schema for Render deployment
 -- Run via: node scripts/migrate.mjs
+-- Queue-based publishing with status/queued_at/published_at
 
 -- Articles table — stores all article content
 CREATE TABLE IF NOT EXISTS articles (
@@ -14,7 +15,7 @@ CREATE TABLE IF NOT EXISTS articles (
   date_iso TEXT NOT NULL DEFAULT '',
   date_human TEXT NOT NULL DEFAULT '',
   reading_time TEXT NOT NULL DEFAULT '',
-  hero_image_url TEXT NOT NULL DEFAULT '',
+  hero_image TEXT NOT NULL DEFAULT '',
   hero_alt TEXT NOT NULL DEFAULT '',
   og_image TEXT NOT NULL DEFAULT '',
   opener_type TEXT NOT NULL DEFAULT '',
@@ -28,9 +29,16 @@ CREATE TABLE IF NOT EXISTS articles (
   has_affiliate_links BOOLEAN NOT NULL DEFAULT false,
   asins_used TEXT[] NOT NULL DEFAULT '{}',
   word_count INTEGER NOT NULL DEFAULT 0,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+
+  -- Queue-based publishing (per addendum)
+  status TEXT NOT NULL DEFAULT 'queued',
+  queued_at TIMESTAMPTZ DEFAULT NOW(),
+  published_at TIMESTAMPTZ,
+
+  -- Refresh tracking
   last_refreshed_30d TIMESTAMPTZ,
-  last_refreshed_90d TIMESTAMPTZ
+  last_refreshed_90d TIMESTAMPTZ,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 -- Verified ASINs catalog
@@ -53,7 +61,10 @@ CREATE TABLE IF NOT EXISTS failed_asins (
 
 -- Indexes for common queries
 CREATE INDEX IF NOT EXISTS idx_articles_slug ON articles(slug);
+CREATE INDEX IF NOT EXISTS idx_articles_status ON articles(status);
 CREATE INDEX IF NOT EXISTS idx_articles_category_slug ON articles(category_slug);
+CREATE INDEX IF NOT EXISTS idx_articles_published_at ON articles(published_at DESC);
+CREATE INDEX IF NOT EXISTS idx_articles_queued_at ON articles(queued_at);
 CREATE INDEX IF NOT EXISTS idx_articles_created_at ON articles(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_articles_last_refreshed_30d ON articles(last_refreshed_30d);
 CREATE INDEX IF NOT EXISTS idx_articles_last_refreshed_90d ON articles(last_refreshed_90d);
